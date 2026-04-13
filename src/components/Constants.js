@@ -12,19 +12,35 @@ export const PROJECTS = [
   {
     id: uuidv4(),
     title: {
-      en: 'Confidential Client — Automotive Sector',
-      fr: 'Client confidentiel — Secteur automobile',
+      en: '<- Cristian Manrique -> — Portfolio && CMS Dashboard',
+      fr: '<- Cristian Manrique -> — Portfolio && Tableau de bord CMS',
     },
-    images: ['/projects/webapp.png'],
+    images: ['/projects/dashboard.png'],
     description: {
-      en: 'Large-scale front-end project in the automotive sector. Redesign of a complex web application with a focus on UX improvement and performance. SOLUTION: Built with React and Redux, new component-based architecture and a unified design system from Figma and Adobe XD mockups. Client data anonymized — production project under NDA.',
-      fr: 'Projet front-end de grande envergure dans le secteur automobile. Refonte d\'une application web complexe axée sur l\'amélioration de l\'UX et la performance. SOLUTION : Architecture React/Redux avec nouveau système de composants et design system unifié (Figma, Adobe XD). Données client anonymisées — projet en production sous NDA.',
+      en: 'Build my portfolio that manages itself. Update projects, swap images and reorder content live, without touching the code. SOLUTION: Full-stack CMS with JWT admin dashboard, bilingual CRUD, drag-and-drop reordering and Cloudinary image uploads. Data persisted in MongoDB Atlas via Netlify serverless functions. Architecture built in close collaboration with Claude AI.',
+      fr: 'Construire mon portfolio qui se gère lui-même. Mettre à jour les projets, changer les images et réordonner le contenu en direct, sans toucher au code. SOLUTION : CMS full-stack avec dashboard admin JWT, CRUD bilingue, réorganisation drag-and-drop et upload Cloudinary. Données persistées dans MongoDB Atlas via les fonctions serverless Netlify. Architecture développée en collaboration étroite avec Claude AI.',
     },
-    tags: ['React', 'Redux', 'React Router', 'Design System', 'Figma', 'Adobe XD'],
-    github: null,
+    tags: ['React', 'React Router', 'MongoDB', 'Netlify Functions', 'Cloudinary', 'JWT', 'Node.js'],
+    github: 'https://github.com/cristianManrique/portfolio-cm',
   },
 
   // ── 2 ─────────────────────────────────────────────────────────────────────
+  {
+    id: uuidv4(),
+    title: {
+      en: 'Notes Dashboard — Kanban Board',
+      fr: 'Tableau de bord Notes — Kanban',
+    },
+    images: ['/projects/notes-dashboard.png'],
+    description: {
+      en: 'Personal project — a drag-and-drop Kanban board to master modern front-end engineering concepts. 3-column board (To Do · In Progress · Done) with note management, dark/light mode, and persistent storage. Built step by step, from skeleton to production-ready app.',
+      fr: 'Projet personnel — un tableau Kanban drag-and-drop pour maîtriser des concepts front-end modernes. 3 colonnes (À faire · En cours · Terminé) avec gestion des notes, mode sombre/clair et stockage persistant. Construit pas à pas, du squelette à l\'app prête pour la production.',
+    },
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'DnD Kit', 'localStorage'],
+    github: 'https://github.com/cristianManrique/notes-dashboard',
+  },
+
+  // ── 3 ─────────────────────────────────────────────────────────────────────
   {
     id: uuidv4(),
     title: {
@@ -40,35 +56,19 @@ export const PROJECTS = [
     github: null,
   },
 
-  // ── 3 ─────────────────────────────────────────────────────────────────────
-  {
-    id: uuidv4(),
-    title: {
-      en: 'Notes Dashboard — Kanban Board',
-      fr: 'Tableau de bord Notes — Kanban',
-    },
-    images: ['/projects/notes-dashboard.png'],
-    description: {
-      en: 'Personal project — a drag-and-drop Kanban board to master modern front-end engineering concepts. 3-column board (To Do · In Progress · Done) with note management, dark/light mode, and persistent storage. Built step by step, from skeleton to production-ready app.',
-      fr: 'Projet personnel — un tableau Kanban drag-and-drop pour maîtriser des concepts front-end modernes. 3 colonnes (À faire · En cours · Terminé) avec gestion des notes, mode sombre/clair et stockage persistant. Construit pas à pas, du squelette à l\'app prête pour la production.',
-    },
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'DnD Kit', 'localStorage'],
-    github: null,
-  },
-
   // ── 4 ─────────────────────────────────────────────────────────────────────
   {
     id: uuidv4(),
     title: {
-      en: 'Portfolio Admin — CMS Dashboard',
-      fr: 'Portfolio Admin — Tableau de bord CMS',
+      en: 'Confidential Client — Automotive Sector',
+      fr: 'Client confidentiel — Secteur automobile',
     },
-    images: ['/projects/dashboard.png'],
+    images: ['/projects/webapp.png'],
     description: {
-      en: 'Built a private CMS to manage portfolio content without touching the codebase. SOLUTION: Secure admin dashboard with JWT authentication — add and remove bilingual projects, upload images auto-optimized to WebP via Cloudinary, data persisted in MongoDB Atlas through Netlify serverless functions.',
-      fr: 'CMS privé pour gérer le contenu du portfolio sans toucher au code. SOLUTION : Dashboard admin sécurisé avec authentification JWT — ajout/suppression de projets bilingues, upload d\'images auto-optimisées en WebP via Cloudinary, données persistées dans MongoDB Atlas via les fonctions serverless Netlify.',
+      en: 'Large-scale front-end project in the automotive sector. Redesign of a complex web application with a focus on UX improvement and performance. SOLUTION: Built with React and Redux, new component-based architecture and a unified design system from Figma and Adobe XD mockups. Client data anonymized — production project under NDA.',
+      fr: 'Projet front-end de grande envergure dans le secteur automobile. Refonte d\'une application web complexe axée sur l\'amélioration de l\'UX et la performance. SOLUTION : Architecture React/Redux avec nouveau système de composants et design system unifié (Figma, Adobe XD). Données client anonymisées — projet en production sous NDA.',
     },
-    tags: ['React', 'React Router', 'MongoDB', 'Netlify Functions', 'Cloudinary', 'JWT', 'Node.js'],
+    tags: ['React', 'Redux', 'React Router', 'Design System', 'Figma', 'Adobe XD'],
     github: null,
   },
 
