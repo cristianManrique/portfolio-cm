@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Convergence&family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/*
+Mobile first — styles de base = mobile
+Mobile L — iPhone 15/16
+@media (min-width: 480px) {  }
+
+Tablet — iPad
+@media (min-width: 768px) {  }
+
+Desktop — MacBook
+@media (min-width: 1024px) {  }
+*/
+
+:root {
+  --bg-deep:      #02253B;
+  --bg-mid:       #032d45;
+  --bg-card:      #0a3a52;
+  --bg-card-alt:  #052336;
+  --accent:       #00b4c8;
+  --accent-dim:   #007a8a;
+  --accent-glow:  rgba(0, 180, 200, 0.18);
+  --cv-glow:      rgba(0, 180, 200, 0.15);
+  --cv-dark-glow: rgba(0, 180, 200, 0.55);
+  --red:          #e63946;
+  --white:        #ffffff;
+  --text-muted:   #a0c4d8;
+  --border:       #00b4c8;
+  --border-dim:   rgba(0, 180, 200, 0.3);
+  --bg-section:   rgba(10, 57, 92, 0.3);
+  --font-display: 'Dosis', sans-serif;
+  --font-body:    'Dosis', sans-serif;
+  --font-mono:    'Convergence', sans-serif;
+  --font-logo:    'Convergence', sans-serif;
+  --shadow:        0 4px 12px rgba(0, 16, 17, 0.25);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* background-color: var(--bg-deep); */
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Ensure the root div is transparent to allow the star trail background to show through */
+html, body, #root {
+  background: transparent;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--accent-dim); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: var(--bg-deep);
+}
+
+/* Section title style */
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.section-title span {
+  font-weight: 300;
+}
+
+/* Teal line decoration */
+.teal-line {
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Tag pill */
+.tag-pill {
+  display: inline-block;
+  padding: 3px 12px;
+  border: 1px solid var(--border-dim);
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.tag-pill:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Brand name */
+.brand-name {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.brand-bracket {
+  color: var(--accent);
+}
+
+/* Nav link */
+.nav-link {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-transform: capitalize;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover {
+  color: var(--white);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}

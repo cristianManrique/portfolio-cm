@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+out/
+
+# Auto-generated files
+coverage/
+*.min.js
+public/bundle.js
+
+# Config files you don't own
+*.config.js

@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* ---------- Base Reset ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: #0A0A0B;
+  color: #e5e5e5;
+
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Layout ---------- */
+
+#root {
+  min-height: 100vh;
+}
+
+/* ---------- Typography ---------- */
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/* ---------- Links ---------- */
+
+a {
+  transition: color 0.2s ease;
+}
+
+/* ---------- Text Selection ---------- */
+
+::selection {
+  background: #ffffff;
+  color: #000;
+}
+
+/* ---------- Scrollbar ---------- */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* ---------- Motion Safe ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

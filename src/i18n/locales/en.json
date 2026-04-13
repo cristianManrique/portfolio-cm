@@ -1,0 +1,227 @@
+{
+  "nav": {
+    "about": "About",
+    "work": "Work",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "contacts": "Contacts"
+  },
+  "hero": {
+    "line1_pre": "The",
+    "line1_bold": "FUTURE",
+    "line1_post": "of",
+    "line2": "DESIGN",
+    "line_and": "&",
+    "line3": "DEVELOPMENT",
+    "line4_pre": "is ",
+    "line4_human": "HUMAN",
+    "line4_ai": "AI",
+    "subtitle_pre": "The ",
+    "subtitle_bold1": "FUTURE ",
+    "subtitle_mid": "is ",
+    "subtitle_bold2": "NOW",
+    "scroll": "Scroll",
+    "pill_dev": "Front-End developer",
+    "pill_design": "Web Designer UI/UX"
+  },
+  "about": {
+    "title": "Front-End developer | Designer (Web UI/UX)",
+    "who": "Who",
+    "am_i": "AM I",
+    "p1": "Front-end developer who designs. Designer who codes.",
+    "p2": "I'm the rare person who moves from visual concept to functional front-end code — bridging the gap myself between the UI, the API, and the database. I deliver both sides of the project, with no friction between design and code, no middleman between the vision and the final product.",
+    "cv": "Curriculum Vitae",
+    "p3": "12 years in art direction and graphic design. 7 years shipping React interfaces in production."
+  },
+  "experience": {
+    "section_pre": "Work",
+    "section_bold": "EXPERIENCE",
+    "jobs": [
+      {
+        "period": "2018 - 2026",
+        "company": "KEYLOOP CANADA Ltd.",
+        "role": "Front-End Developer - Designer",
+        "tags": [
+          "Javascript",
+          "React",
+          "Redux",
+          "GitHub",
+          "Claude AI",
+          "Copilot AI",
+          "Figma",
+          "Affinity",
+          "Adobe XD"
+        ]
+      },
+      {
+        "period": "2017 - 2018",
+        "company": "PUBLITECH",
+        "role": "Front-End Developer - Designer",
+        "tags": [
+          "Javascript",
+          "Angular",
+          "Wordpress",
+          "GitHub",
+          "Photoshop",
+          "HTML-CSS"
+        ]
+      },
+      {
+        "period": "2016 - 2017",
+        "company": "LOREM IPSUM",
+        "role": "Front-End Developer - Designer",
+        "tags": [
+          "Javascript",
+          "Angular"
+        ]
+      },
+      {
+        "period": "2015",
+        "company": "LOREM IPSUM2",
+        "role": "Front-End Developer - Designer",
+        "tags": [
+          "Javascript",
+          "Angular"
+        ]
+      },
+      {
+        "period": "2014",
+        "company": "LOREM IPSUM24r56",
+        "role": "Front-End Developer - Designer",
+        "tags": [
+          "Javascript",
+          "Angular"
+        ]
+      }
+    ],
+    "expand": "See more",
+    "collapse": "See less"
+  },
+  "projects": {
+    "section": "PROJECTS"
+  },
+  "skills": {
+    "section": "SKILLS",
+    "columns": [
+      {
+        "category": "Development",
+        "icon": "{ }",
+        "skills": [
+          {
+            "name": "JavaScript",
+            "level": 95
+          },
+          {
+            "name": "Typescript",
+            "level": 65
+          },
+          {
+            "name": "Node.js",
+            "level": 90
+          },
+          {
+            "name": "React",
+            "level": 95
+          },
+          {
+            "name": "Next",
+            "level": 40
+          },
+          {
+            "name": "Angular",
+            "level": 40
+          },
+          {
+            "name": "Redux & Redux Thunk",
+            "level": 85
+          },
+          {
+            "name": "CSS/SCSS/SASS/Styled",
+            "level": 98
+          }
+        ]
+      },
+      {
+        "category": "Design & UX/UI",
+        "icon": "✦",
+        "skills": [
+          {
+            "name": "Figma",
+            "level": 75
+          },
+          {
+            "name": "Adobe XD",
+            "level": 85
+          },
+          {
+            "name": "Affinity",
+            "level": 95
+          },
+          {
+            "name": "Adobe CC",
+            "level": 82
+          },
+          {
+            "name": "Branding",
+            "level": 88
+          }
+        ]
+      },
+      {
+        "category": "Tools & AI",
+        "icon": "⚡",
+        "skills": [
+          {
+            "name": "GitHub + Copilot AI",
+            "level": 90
+          },
+          {
+            "name": "Claude AI",
+            "level": 92
+          },
+          {
+            "name": "Copilot AI",
+            "level": 88
+          },
+          {
+            "name": "Affinity AI",
+            "level": 85
+          },
+          {
+            "name": "Adobe AI",
+            "level": 90
+          }
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "section": "CONTACT",
+    "subtitle": "Let's work together",
+    "name_label": "Name",
+    "name_placeholder": "Your name",
+    "email_label": "Email",
+    "email_placeholder": "your@email.com",
+    "message_label": "Message",
+    "message_placeholder": "Tell me about your project or idea...",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Something went wrong. Please try again.",
+    "cooldown": "Please wait a moment before sending again.",
+    "err_name_required": "Name is required.",
+    "err_email_required": "Email is required.",
+    "err_email_invalid": "Please enter a valid email address.",
+    "err_message_required": "Message is required."
+  },
+  "footer": {
+    "section": "CONTACTS",
+    "links": {
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "email": "Email"
+    },
+    "copyright": "©2026 Cristian Manrique"
+  }
+}
