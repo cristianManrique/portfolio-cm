@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   CONTACT_LINKS,
   EASE_OUT_EXPO,
@@ -25,30 +25,20 @@ export const ICON_MAP = {
 const Footer = () => {
   const { t } = useTranslate();
 
-  const handleLogoClick = e => {
+  const handleLogoClick = useCallback((e) => {
     e.preventDefault();
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  },[]);
 
   return (
     <Styled.FooterEl id="contacts">
       <Styled.FooterContainer>
-        <Styled.SectionTitle
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
-        >
-          {t('footer.section')}
-        </Styled.SectionTitle>
-
-        <Styled.TitleLine
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        />
+        <Styled.FooterBrandName href="#" onClick={handleLogoClick}>
+            <Styled.FooterBracket>{BRAND_PREFIX}</Styled.FooterBracket>
+            {BRAND_NAME}
+            <Styled.FooterBracket>{BRAND_SUFFIX}</Styled.FooterBracket>
+          </Styled.FooterBrandName>
 
         <Styled.FooterContactsRow
           initial={{ opacity: 0, y: 20 }}
@@ -71,17 +61,11 @@ const Footer = () => {
             )
           })}
         </Styled.FooterContactsRow>
-      </Styled.FooterContainer>
 
-      <Styled.FooterDivider />
-      <Styled.FooterCopyrightRow>
-          <Styled.FooterBrandName href="#" onClick={handleLogoClick}>
-            <Styled.FooterBracket>{BRAND_PREFIX}</Styled.FooterBracket>
-            {BRAND_NAME}
-            <Styled.FooterBracket>{BRAND_SUFFIX}</Styled.FooterBracket>
-          </Styled.FooterBrandName>
-          <Styled.FooterCopyright>{t('footer.copyright')}</Styled.FooterCopyright>
-        </Styled.FooterCopyrightRow>
+        <Styled.FooterCopyright>
+          &copy; {new Date().getFullYear()} {t('footer.copyright')}
+          </Styled.FooterCopyright>
+      </Styled.FooterContainer>
     </Styled.FooterEl>
   )
 }

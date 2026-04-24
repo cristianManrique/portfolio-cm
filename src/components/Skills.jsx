@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { EASE_OUT_EXPO, SKILLS } from '../components/Constants'
-import * as Styled from '../components/PortfolioStyled'
-import useTranslate from '../hooks/useTranslate'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { EASE_OUT_EXPO, SKILLS } from '../components/Constants';
+import * as Styled from '../components/PortfolioStyled';
+import useTranslate from '../hooks/useTranslate';
 
 // ─── Sub-component ────────────────────────────────────────────────────────────
 const SkillBar = ({ name, level, delay }) => (
@@ -54,11 +54,11 @@ const Skills = () => {
         <Styled.SkillsGrid>
           {SKILLS.map((col, colIdx) => {
             // category is { en, fr } object
-            const categoryName = isEN ? col.category.en : col.category.fr
+            const categoryName = t(`skills.columns.${colIdx}.category`);
 
             return (
               <Styled.SkillsColumnCard
-                key={categoryName}
+                key={`categoryName-${colIdx}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -93,4 +93,4 @@ const Skills = () => {
   )
 }
 
-export default Skills
+export default Skills;

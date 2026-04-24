@@ -26,7 +26,7 @@ export const SectionTitle = styled(motion.h2)`
   font-size: clamp(2rem, 6vw, 4.5rem);
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   line-height: 1;
   margin-bottom: 1rem;
   text-align: center;
@@ -44,15 +44,18 @@ export const SectionFlipTitle = styled(motion.div)`
   font-size: clamp(2rem, 6vw, 4.5rem);
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   line-height: 1;
   margin-bottom: 1rem;
   text-align: center;
 
-  span { font-weight: 900; }
+  span {
+  font-weight: 900;
+  }
 
   @media (max-width: 480px) {
     font-size: 1.8rem;
+    letter-spacing: 0.03em;
   }
 `
 
@@ -72,10 +75,9 @@ export const NavbarNav = styled(motion.nav)`
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  padding: 0 2.5rem;
+  padding: 0 2rem;
   height: 64px;
 
-  @media (max-width: 480px) { padding: 0 1rem; }
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,29 +85,35 @@ export const NavbarNav = styled(motion.nav)`
   background: ${({ $scrolled }) => $scrolled ? 'rgba(2, 26, 43, 0.92)' : 'transparent'};
   backdrop-filter: ${({ $scrolled }) => $scrolled ? 'blur(12px)' : 'none'};
   border-bottom: ${({ $scrolled }) => $scrolled ? '1px solid rgba(0,180,200,0.18)' : '1px solid transparent'};
+
+  @media (max-width: 480px) {
+    padding: 0 0.75rem;
+  }
 `
 
 export const NavbarLogo = styled.a`
   font-family: var(--font-mono);
   font-size: 1rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   text-decoration: none;
   color: var(--white);
   white-space: nowrap;
+  transition: color 0.2s;
+  &:hover { color: var(--accent); }
 `
 
 export const H1Title = styled.h1`
   font-family: var(--font-mono);
-  font-size: 0.875rem;
-  letter-spacing: 0.02em;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
   text-decoration: none;
   color: var(--text-muted);
   white-space: nowrap;
 
   @media (max-width: 480px) {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
-  `
+`
 
 export const NavbarBracket = styled.span`
   color: var(--red);
@@ -115,7 +123,9 @@ export const NavbarLinks = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
-  @media (max-width: 768px) { display: none; }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const NavbarLink = styled.a`
@@ -154,6 +164,14 @@ export const NavbarCVLink = styled(motion.a)`
   &:hover { color: var(--white); }
 `
 
+export const NavbarPortfolioLink = styled(motion.a)`
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  transition: color 0.2s;
+  &:hover { color: var(--accent); }
+`
+
 export const NavbarLangButton = styled.button`
   font-family: var(--font-body);
   font-size: 0.875rem;
@@ -166,7 +184,9 @@ export const NavbarLangButton = styled.button`
   padding: 2px 8px;
   border-left: 1px solid var(--border-dim);
   transition: color 0.2s;
-  &:hover { color: var(--white); }
+  &:hover {
+    color: var(--white);
+  }
 `
 
 export const NavbarHamburger = styled.button`
@@ -203,6 +223,7 @@ export const NavbarMobileMenu = styled(motion.div)`
 export const NavbarMobileLangButton = styled.button`
   font-family: var(--font-body);
   font-size: 0.9rem;
+  letter-spacing: 0.03em;
   font-weight: 700;
   color: var(--accent);
   background: none;
@@ -294,9 +315,17 @@ export const HeroLineThin = styled(motion.div)`
   line-height: 1.3;
   margin: 0;
 
-  @media (max-width: 1024px) { font-size: clamp(1.3rem, 2.8vw, 2.2rem); }
-  @media (max-width: 768px)  { font-size: clamp(1.15rem, 2.8vw, 1.8rem); }
-  @media (max-width: 480px)  { font-size: clamp(1rem, 3.2vw, 1.5rem); }
+  @media (max-width: 1024px) {
+    font-size: clamp(1.3rem, 2.8vw, 2.2rem);
+  }
+
+  @media (max-width: 768px)  {
+    font-size: clamp(1.15rem, 2.8vw, 1.8rem);
+  }
+
+  @media (max-width: 480px)  {
+    font-size: clamp(1rem, 3.2vw, 1.5rem);
+  }
 `
 
 export const HeroLineBold = styled(motion.div)`
@@ -311,6 +340,7 @@ export const HeroLineBold = styled(motion.div)`
     font-size: clamp(3rem, 8.5vw, 5.5rem);
     letter-spacing: -0.03em;
    }
+
   @media (max-width: 480px)  {
     font-size: clamp(2.8rem, 10vw, 4.5rem);
     letter-spacing: -0.03em;
@@ -328,12 +358,14 @@ export const HeroBold = styled.span`
   font-size: inherit;
   color: var(--white);
   font-weight: 900;
+  letter-spacing: 0.03em;
 `
 
 export const AiBold = styled.span`
   font-size: inherit;
   color: var(--accent);
   font-weight: 900;
+  letter-spacing: 0.03em;
 `
 
 export const HeroTealDivider = styled(motion.div)`
@@ -436,7 +468,7 @@ export const HeroNameText = styled.h3`
   font-family: var(--font-mono);
   font-size: 1.1rem;
   color: var(--white);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   white-space: nowrap;
   margin-bottom: 6px;
 `
@@ -444,7 +476,6 @@ export const HeroNameText = styled.h3`
 export const HeroNameBracket = styled.span`
   color: var(--red);
 `
-
 
 export const HeroPillsRow = styled.div`
   display: flex;
@@ -470,8 +501,12 @@ export const AboutSection = styled.section`
   background: transparent;
   padding: 6rem 2.5rem;
 
-  @media (max-width: 768px) { padding: 4rem 1.5rem; }
-  @media (max-width: 480px) { padding: 3rem 1rem; }
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+  @media (max-width: 480px) {
+    padding: 3rem 1rem;
+  }
 `
 
 export const AboutContainer = styled.div`
@@ -528,7 +563,7 @@ export const AboutAvatarImg = styled.img`
 export const AboutBrandName = styled.h1`
   font-family: var(--font-mono);
   font-size: 1.5rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   color: var(--white);
 `
 
@@ -588,9 +623,22 @@ export const AboutSectionLabel = styled.div`
   margin-bottom: 1rem;
 `
 
+export const AboutParaBold = styled.p`
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+
+  &:last-child { margin-bottom: 0; }
+`
+
 export const AboutPara = styled.p`
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
   color: var(--text-muted);
   line-height: 1.8;
   margin-bottom: 1rem;
@@ -605,8 +653,12 @@ export const ExperienceSection = styled.section`
   background: var(--bg-section);
   padding: 6rem 2.5rem;
 
-  @media (max-width: 768px) { padding: 4rem 1.5rem; }
-  @media (max-width: 480px) { padding: 3rem 1rem; }
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+  @media (max-width: 480px) {
+    padding: 3rem 1rem;
+   }
 `
 
 export const ExperienceContainer = styled.div`
@@ -708,7 +760,7 @@ export const ExperiencePeriod = styled.div`
 
 export const ExperienceCompany = styled.div`
   font-family: var(--font-display);
-  font-size: 1.7rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--accent);
   text-transform: uppercase;
@@ -717,19 +769,20 @@ export const ExperienceCompany = styled.div`
 
 export const ExperienceRole = styled.div`
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: var(--white);
-  margin-bottom: 0.9rem;
-  letter-spacing: 0.02em;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.03em;
 `
 
 export const ExperienceDesc = styled.p`
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.7;
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
+  letter-spacing: 0.03em;
   opacity: 0.85;
 `
 
@@ -797,7 +850,7 @@ export const FutureTitle = styled(motion.h2)`
   font-size: clamp(1.5rem, 4vw, 2.3rem);
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   line-height: 1;
   margin-bottom: 0.5rem;
   text-align: center;
@@ -1025,6 +1078,7 @@ export const ProjectCardTitle = styled.h2`
 export const ProjectCardDesc = styled.p`
   font-family: var(--font-body);
   font-size: 0.95rem;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
   line-height: 1.6;
 `
@@ -1067,10 +1121,9 @@ export const LightboxModal = styled(motion.div)`
     max-height: 90vh;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 480px) {
     flex-direction: column;
     max-height: 90vh;
-    margin-top: 24px;
   }
 `
 
@@ -1169,9 +1222,11 @@ export const LightboxPanel = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+    height: 100%;
     border-left: none;
     border-top: 1px solid rgba(0, 180, 200, 0.15);
     padding: 20px 16px;
+    flex: 1;
   }
 `
 
@@ -1195,12 +1250,14 @@ export const LightboxAccent = styled.div`
 export const LightboxDesc = styled.p`
   font-family: var(--font-body);
   font-size: 1rem;
+  letter-spacing: 0.03em;
   color: var(--text-muted);
   line-height: 1.75;
   margin: 0;
 
   @media (max-width: 480px) {
     font-size: 0.9rem;
+    letter-spacing: 0.02em;
     line-height: 1.3;
   }
 `
@@ -1332,6 +1389,7 @@ export const SkillsBarLabel = styled.div`
 export const SkillsBarName = styled.p`
   font-family: var(--font-body);
   font-size: 0.85rem;
+  letter-spacing: 0.03em;
   color: var(--text-muted);
   font-weight: 500;
 `
@@ -1339,6 +1397,7 @@ export const SkillsBarName = styled.p`
 export const SkillsBarPercent = styled.p`
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  letter-spacing: 0.03em;
   color: var(--accent);
 `
 
@@ -1362,72 +1421,129 @@ export const SkillsBarFill = styled(motion.div)`
 export const FooterEl = styled.footer`
   background: transparent;
   border-top: 1px solid var(--border-dim);
-  padding: 5rem 2.5rem 3rem;
 
-  @media (max-width: 768px) { padding: 4rem 1.5rem 2rem; }
-  @media (max-width: 480px) { padding: 3rem 1rem 2rem; }
+  /* ── Desktop ── */
+  padding: 2rem 4rem;
+
+  /* ── Tablet ── */
+  @media (max-width: 768px) {
+    padding: 1.75rem 2.5rem;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    padding: 1.5rem 1.25rem;
+  }
 `
 
 export const FooterContainer = styled.div`
-  max-width: 820px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
   margin: 0 auto;
-  text-align: center;
+
+  /* ── Desktop ── */
+  flex-direction: row;
+  gap: 2rem;
+
+  /* ── Tablet ── */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    text-align: center;
+  }
 `
 
 export const FooterContactsRow = styled(motion.div)`
   display: flex;
   justify-content: center;
-  gap: 2.5rem;
-  margin-bottom: 1rem;
+  align-items: center;
   flex-wrap: wrap;
 
+  /* ── Desktop ── */
+  gap: 2rem;
+
+  /* ── Tablet ── */
+  @media (max-width: 768px) {
+    gap: 1.25rem;
+  }
+
+  /* ── Mobile ── */
   @media (max-width: 480px) {
-    gap: 1.5rem;
-    flex-direction: column;
-    align-items: center;
+    gap: 0.75rem;
+    flex-direction: row;
   }
 `
 
 export const FooterContactLink = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   font-family: var(--font-body);
-  font-size: 0.9rem;
   font-weight: 500;
   color: var(--text-muted);
   text-decoration: none;
-  letter-spacing: 0.05em;
-  padding: 6px 0;
+  letter-spacing: 0.06em;
   transition: color 0.2s;
 
-  &:hover { color: var(--accent); }
-`
+  /* ── Desktop ── */
+  font-size: 0.9rem;
+  padding: 6px 0;
 
-export const FooterDivider = styled.div`
-  height: 1px;
-  background: var(--border-dim);
-  margin-bottom: 1rem;
-`
+  /* ── Tablet ── */
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
 
-export const FooterCopyrightRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-
+  /* ── Mobile ── */
   @media (max-width: 480px) {
-    flex-direction: column;
-    text-align: center;
+    font-size: 0.8rem;
+    padding: 4px 0;
+  }
+  transition: color 0.2s;
+  &:hover { color: var(--accent); }
+
+  svg {
+    /* ── Mobile — slightly smaller icons ── */
+    @media (max-width: 480px) {
+      width: 16px;
+      height: 16px;
+    }
   }
 `
 
 export const FooterBrandName = styled.a`
   font-family: var(--font-mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.02em;
   color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+
+  /* ── Desktop ── */
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+
+  /* ── Tablet ── */
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    font-size: 0.78rem;
+  }
+  transition: color 0.2s;
+  &:hover { color: var(--accent); }
 `
 
 export const FooterBracket = styled.span`
@@ -1436,12 +1552,29 @@ export const FooterBracket = styled.span`
 
 export const FooterCopyright = styled.small`
   font-family: var(--font-body);
-  font-size: 0.8rem;
   color: var(--text-muted);
-  opacity: 0.7;
+  opacity: 0.8;
+  white-space: nowrap;
+
+  /* ── Desktop ── */
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+
+  /* ── Tablet ── */
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 480px) {
+    font-size: 0.72rem;
+    opacity: 0.5;
+  }
 `
 
-// ── Contact ───────────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────────────────────
+// CONTACT FORM
+// ─────────────────────────────────────────────────────────────────────────────
 export const ContactSection = styled.section`
   padding: 6rem 2.5rem;
   @media (max-width: 768px) { padding: 4rem 1.5rem; }
@@ -1487,6 +1620,7 @@ export const ContactInput = styled.input`
   color: var(--white);
   font-family: var(--font-body);
   font-size: 0.92rem;
+  letter-spacing: 0.03em;
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s, background 0.2s;
@@ -1506,6 +1640,7 @@ export const ContactTextarea = styled.textarea`
   color: var(--white);
   font-family: var(--font-body);
   font-size: 0.92rem;
+  letter-spacing: 0.03em;
   outline: none;
   box-sizing: border-box;
   resize: vertical;
@@ -1541,11 +1676,13 @@ export const ContactSubmitBtn = styled(motion.button)`
   cursor: pointer;
   transition: opacity 0.2s;
   &:disabled { opacity: 0.45; cursor: default; }
+
   @media (max-width: 480px) { align-self: stretch; text-align: center; }
 `
 
 export const ContactStatus = styled(motion.p)`
   font-size: 0.85rem;
+  letter-spacing: 0.03em;
   padding: 0.65rem 1rem;
   border-radius: 4px;
   text-align: center;
@@ -1558,7 +1695,8 @@ export const ContactCaptchaRow = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-  /* Dark theme override for the reCAPTCHA iframe */
+
+  /* Dark theme override for the reCAPTCHA iframe border */
   iframe {
     border-radius: 4px;
     filter: invert(0.9) hue-rotate(180deg);

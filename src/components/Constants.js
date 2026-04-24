@@ -8,81 +8,66 @@ import { v4 as uuidv4 } from 'uuid'
 
 // ─── API Data ─────────────────────────────────────────────────────────────
 export const PROJECTS = [
-  // ── 1 ─────────────────────────────────────────────────────────────────────
   {
     id: uuidv4(),
     title: {
-      en: '<- Cristian Manrique -> — Portfolio && CMS Dashboard',
-      fr: '<- Cristian Manrique -> — Portfolio && Tableau de bord CMS',
+      en: "Confidential Client — Automotive Sector",
+      fr: "Client confidentiel — secteur automobile"
     },
-    images: ['/projects/dashboard.png'],
+    images: [
+      '/projects/project-placeholder.svg',
+    ],
     description: {
-      en: 'Build my portfolio that manages itself. Update projects, swap images and reorder content live, without touching the code. SOLUTION: Full-stack CMS with JWT admin dashboard, bilingual CRUD, drag-and-drop reordering and Cloudinary image uploads. Data persisted in MongoDB Atlas via Netlify serverless functions. Architecture built in close collaboration with Claude AI.',
-      fr: 'Construire mon portfolio qui se gère lui-même. Mettre à jour les projets, changer les images et réordonner le contenu en direct, sans toucher au code. SOLUTION : CMS full-stack avec dashboard admin JWT, CRUD bilingue, réorganisation drag-and-drop et upload Cloudinary. Données persistées dans MongoDB Atlas via les fonctions serverless Netlify. Architecture développée en collaboration étroite avec Claude AI.',
-    },
-    tags: ['React', 'React Router', 'MongoDB', 'Netlify Functions', 'Cloudinary', 'JWT', 'Node.js'],
-    github: 'https://github.com/cristianManrique/portfolio-cm',
-  },
-
-  // ── 2 ─────────────────────────────────────────────────────────────────────
-  {
-    id: uuidv4(),
-    title: {
-      en: 'Notes Dashboard — Kanban Board',
-      fr: 'Tableau de bord Notes — Kanban',
-    },
-    images: ['/projects/notes-dashboard.png'],
-    description: {
-      en: 'Personal project — a drag-and-drop Kanban board to master modern front-end engineering concepts. 3-column board (To Do · In Progress · Done) with note management, dark/light mode, and persistent storage. Built step by step, from skeleton to production-ready app.',
-      fr: 'Projet personnel — un tableau Kanban drag-and-drop pour maîtriser des concepts front-end modernes. 3 colonnes (À faire · En cours · Terminé) avec gestion des notes, mode sombre/clair et stockage persistant. Construit pas à pas, du squelette à l\'app prête pour la production.',
-    },
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'DnD Kit', 'localStorage'],
-    github: 'https://github.com/cristianManrique/notes-dashboard',
-  },
-
-  // ── 3 ─────────────────────────────────────────────────────────────────────
-  {
-    id: uuidv4(),
-    title: {
-      en: 'AI Form Builder — Claude AI',
-      fr: 'Générateur de formulaires IA — Claude AI',
-    },
-    images: ['/projects/form.png'],
-    description: {
-      en: 'Internal tooling project for the automotive sector. Developed an AI-assisted workflow to accelerate form creation — reducing a multi-step manual process to a matter of minutes. SOLUTION: Integration of Claude AI with React to automate form structure generation, JSON schema output, and a live preview rendering. Internal tooling project — data anonymized for confidentiality.',
-      fr: 'Outil interne pour le secteur automobile. Développement d\'un workflow assisté par IA pour accélérer la création de formulaires — réduisant un processus manuel de plusieurs étapes à quelques minutes. SOLUTION : Intégration de Claude AI avec React pour automatiser la génération de structure, l\'export JSON Schema et le rendu live. Données anonymisées.',
-    },
-    tags: ['Claude AI', 'React', 'PDF Analysis', 'JSON Schema', 'i18n', 'UX'],
+      en: 'Redesign of a complex web application for a major automotive client. Focus on improving UX  and implementing new features using React and Redux. Fictional mockup for demonstration purposes only. All data displayed is fictitious.',
+      fr: 'Refonte d’une application web complexe pour un grand client du secteur automobile. Accent sur l’amélioration de l’UX et l’implémentation de nouvelles fonctionnalités avec React et Redux. Maquette fictive à des fins de démonstration uniquement. Toutes les données affichées sont fictives.'},
+    tags: ['React', 'Redux', 'Figma', 'Styled Components', 'Adobe XD'],
     github: null,
   },
-
-  // ── 4 ─────────────────────────────────────────────────────────────────────
   {
     id: uuidv4(),
     title: {
-      en: 'Confidential Client — Automotive Sector',
-      fr: 'Client confidentiel — Secteur automobile',
+      en: "Adwords Campaign - Chart & Dashboard",
+      fr: "Campagne Adwords - Graphiques & Tableau de bord"
     },
-    images: ['/projects/webapp.png'],
+    images: [
+      '/projects/project-placeholder.svg',
+    ],
     description: {
-      en: 'Large-scale front-end project in the automotive sector. Redesign of a complex web application with a focus on UX improvement and performance. SOLUTION: Built with React and Redux, new component-based architecture and a unified design system from Figma and Adobe XD mockups. Client data anonymized — production project under NDA.',
-      fr: 'Projet front-end de grande envergure dans le secteur automobile. Refonte d\'une application web complexe axée sur l\'amélioration de l\'UX et la performance. SOLUTION : Architecture React/Redux avec nouveau système de composants et design system unifié (Figma, Adobe XD). Données client anonymisées — projet en production sous NDA.',
+      en: 'Google AdWords campaign data visualized with interactive charts. Doughnut + line charts per keyword showing clicks, conversions and impressions over time.',
+      fr: 'Données de campagne Google AdWords visualisées avec des graphiques interactifs. Graphiques en anneau et linéaires par mot-clé montrant les clics, conversions et impressions au fil du temps.'
     },
-    tags: ['React', 'Redux', 'React Router', 'Design System', 'Figma', 'Adobe XD'],
-    github: null,
+    tags: ['React 18', 'React Router v6', 'React Chart v4', 'ESLint', 'Prettier'],
+      github: 'https://github.com/cristianManrique/myAdwordsCampaign-React',
   },
-
-  // ── Coming soon ────────────────────────────────────────────────────────────
+  {
+  id: uuidv4(),
+  title: {
+    en: "React Image Gallery",
+    fr: "Galerie d’images React"
+  },
+  images: [
+    '/projects/project-placeholder.svg',
+  ],
+  description: {
+    en: "Interactive image gallery built with React. Features include dynamic image loading, responsive grid layout, and smooth user interactions. Focus on clean UI and performance.",
+    fr: "Galerie d’images interactive développée avec React. Inclut un chargement dynamique des images, une grille responsive et des interactions fluides. Accent sur une interface propre et performante."
+  },
+  tags: ['React', 'React Bootstrap', 'ESLint', 'Prettier'],
+  github: 'https://github.com/cristianManrique/img-gallery-react',
+ },
   {
     id: uuidv4(),
     title: {
-      en: 'Brand Identity',
-      fr: 'Identité de marque',
+      en: "Brand Identity",
+      fr: "Identité de la marque"
     },
-    images: ['/projects/project-placeholder.svg'],
+    images: [
+      '/projects/project-placeholder.svg',
+      '/projects/project-placeholder.svg',
+    ],
     description: {
       en: 'Coming soon.',
-      fr: 'Bientôt disponible.',
+      fr: 'Bientôt disponible.'
     },
     tags: ['Figma', 'Affinity', 'Adobe XD'],
     github: null,
@@ -90,16 +75,17 @@ export const PROJECTS = [
   {
     id: uuidv4(),
     title: {
-      en: 'Next.js Application',
-      fr: 'Application Next.js',
+      en: "Next Application",
+      fr: "Application Next"
     },
-    images: ['/projects/project-placeholder.svg'],
+    images: [
+      '/projects/project-placeholder.svg',
+    ],
     description: {
       en: 'Coming soon.',
-      fr: 'Bientôt disponible.',
+      fr: 'Bientôt disponible.'
     },
-    tags: ['Next.js', 'Tailwind CSS', 'TypeScript'],
-    github: null,
+    tags: ['Next.js', 'Tailwind CSS', 'GitHub'],
   },
 ];
 
@@ -113,8 +99,8 @@ export const EXPERIENCE = [
     },
     period: '2018 - 2026',
     description: {
-      en: 'Worked on complex features within a large-scale web platform using React, Redux, and Material UI. Designed UX mockups (Adobe XD, Figma) and contributed to AI integration in the workflow.',
-      fr: 'Développement de fonctionnalités complexes dans une plateforme web à grande échelle avec React, Redux et Material UI. Création de maquettes UX (Adobe XD, Figma) et intégration de l\'IA dans le workflow.'
+      en: 'Modular micro-frontend SaaS platform for automotive dealerships across Canada. Redux store with isolated sub-spaces, dynamic reducers, functional components (controller/view pattern), design system with Context API. Full modules refactoring — lazy loading, EN/FR i18n, Cypress coverage. Designed a Claude AI agents system reducing development time from 5 days to 2 days. 60% productivity gain. Agile Scrum — daily standups, sprint planning, code reviews. Tools: JIRA, Confluence, Teams, GitHub Copilot.',
+      fr: 'Plateforme SaaS micro-frontend modulaire pour concessionnaires automobiles à travers le Canada. Redux store avec sous-espaces isolés, reducers dynamiques, composants fonctionnels (pattern controller/vue), design system avec Context API. Refactorisation complète de modules — lazy loading, i18n EN/FR, couverture Cypress. Système d\'agents Claude AI pour accélérer le workflow — réduisant le temps de développement de 5 jours à 2 jours. 60% de gain de productivité. Agile Scrum — daily standups, sprint planning, code reviews. Outils : JIRA, Confluence, Teams, GitHub Copilot.'
     },
   },
   {
@@ -126,8 +112,8 @@ export const EXPERIENCE = [
     },
     period: '2017 - 2018',
     description: {
-      en: 'Developed Angular applications and redesigned WordPress sites for corporate clients, including gaetanfrigon.com. Created logos, wireframes and UI/UX mockups.',
-      fr: 'Développement Angular et refonte de sites WordPress pour des clients corporatifs, incluant gaetanfrigon.com. Conception de logos, wireframes et maquettes UI/UX.'
+      en: 'Angular development and WordPress redesign for corporate clients. Kanban methodology. Local dev with VirtualBox/Linux internal server. Logo design, wireframes, UI/UX mockups.',
+      fr: 'Développement Angular et refonte WordPress pour clients corporatifs. Méthode Kanban. Environnement local VirtualBox/Linux avec serveur interne. Logos, wireframes, maquettes UI/UX.'
     },
   },
   {
@@ -139,8 +125,8 @@ export const EXPERIENCE = [
     },
     period: '2017',
     description: {
-      en: 'Integrated Photoshop mockups into web platforms with pixel-perfect precision using HTML, Symfony/Twig, jQuery, and LESS.',
-      fr: 'Intégration de maquettes Photoshop pour les plateformes web avec précision pixel perfect (HTML, Symfony/Twig, jQuery, LESS).'
+      en: 'Photoshop mockup integration for TVA web platforms — HTML, Symfony/Twig, jQuery, LESS.',
+      fr: 'Intégration de maquettes Photoshop pour plateformes web TVA — HTML, Symfony/Twig, jQuery, LESS'
     },
   },
   {
@@ -152,8 +138,8 @@ export const EXPERIENCE = [
     },
     period: '2017',
     description: {
-      en: 'Designed and developed WordPress websites for industrial clients (Summa Metal, Ledaan Interiors) using HTML5, Sass, and Gulp.',
-      fr: 'Conception et intégration de sites WordPress pour des clients industriels (Summa Metal, Ledaan Intérieurs) avec HTML5, Sass et Gulp.'
+      en: 'Pixel-perfect Photoshop mockup integration for WordPress sites — HTML5, Sass, Gulp. Kanban methodology.',
+      fr: 'Intégration pixel-perfect de maquettes Photoshop pour sites WordPress — HTML5, Sass, Gulp. Méthode Kanban.'
     },
   },
   {
@@ -165,8 +151,8 @@ export const EXPERIENCE = [
     },
     period: '2016 - 2017',
     description: {
-      en: 'Designed and developed an internal web application with a UX-driven architecture using jQuery, AJAX, SASS, and Symfony/PHP MVC.',
-      fr: 'Conception et développement d\'une application web interne avec architecture UX utilisant jQuery, AJAX, SASS et Symfony/PHP MVC.'
+      en: 'Internal web application with UX architecture — jQuery, AJAX, SASS, Symfony/PHP MVC. Agile methodology.',
+      fr: 'Application web interne avec architecture UX — jQuery, AJAX, SASS, Symfony/PHP MVC. Méthode Agile.'
     },
   },
   {
@@ -178,117 +164,78 @@ export const EXPERIENCE = [
     },
     period: '2006 - 2011',
     description: {
-      en: 'Led art direction for major clients including Loto-Québec (La Poule aux œufs d\'or, Gagnant à Vie). Produced posters, DVD covers, and magazine spreads. Managed prepress and offset printing.',
-      fr: 'Direction artistique pour des clients majeurs dont Loto-Québec (La Poule aux œufs d\'or, Gagnant à Vie). Réalisation d\'affiches, boîtiers DVD et doubles pages. Gestion du prépresse et impression offset.'
+      en: 'Led art direction for major clients including Loto-Québec (La Poule aux œufs d’or, Gagnant à Vie). Produced posters, DVD covers, and magazine spreads. Managed prepress and offset printing.',
+      fr: 'Direction artistique pour des clients majeurs dont Loto-Québec (La Poule aux œufs d’or, Gagnant à Vie). Réalisation d’affiches, boîtiers DVD et doubles pages. Gestion du prépresse et impression offset.'
     },
   },
 ];
 
+// ─── Skills ───────────────────────────────────────────────────────────────────
+// category label stays in locales.json (skills.columns[n].category)
+// Only skill names + levels live here
 export const SKILLS = [
-   {
-    "category": {
-      en:"Development",
-      fr:"Développement"
-    },
-    "icon": "{ }",
-    "skills": [
-      {
-        "name": "JavaScript",
-        "level": 95
-      },
-      {
-        "name": "Typescript",
-        "level": 65
-      },
-      {
-        "name": "Node.js",
-        "level": 90
-      },
-      {
-        "name": "React",
-        "level": 95
-      },
-      {
-        "name": "Next",
-        "level": 40
-      },
-      {
-        "name": "Angular",
-        "level": 40
-      },
-      {
-        "name": "Redux & Redux Thunk",
-        "level": 85
-      },
-      {
-        "name": "CSS/SCSS/SASS/Styled",
-        "level": 98
-      }
-    ]
+  {
+    // Developement
+    // category: t('skills.columns.0.category') — in locales.json
+    icon: '{ }',
+    skills: [
+      { name: 'JavaScript',             level: 90 },
+      { name: 'TypeScript',             level: 85 },
+      { name: 'Redux & Thunk',          level: 85 },
+      { name: 'HTML5,CSS3/SASS, MUI',   level: 85 },
+      { name: 'React.js',               level: 95 },
+      { name: 'Next.js',                level: 85 },
+      { name: 'Angular.js',             level: 60 },
+      { name: 'REST APIs, GraphQL',     level: 75 },
+      { name: 'Context API',            level: 75 }
+    ],
   },
   {
-    "category": {
-      en:"Design & UX/UI",
-      fr: "Design & UX/UI"
-  },
-    "icon": "✦",
-    "skills": [
-      {
-        "name": "Figma",
-        "level": 75
-      },
-      {
-        "name": "Adobe XD",
-        "level": 85
-      },
-      {
-        "name": "Affinity",
-        "level": 95
-      },
-      {
-        "name": "Adobe CC",
-        "level": 82
-      },
-      {
-        "name": [
-          "Branding",
-          "Image de marque"
-        ],
-        "level": 88
-      }
-    ]
+    // Design & UI/UX
+    // category: t('skills.columns.1.category') — in locales.json
+    icon: '✦',
+    skills: [
+      { name: 'Affinity',      level: 95 },
+      { name: 'Adobe XD',      level: 85 },
+      { name: 'Illustrator',   level: 80 },
+      { name: 'Photoshop',     level: 80 },
+      { name: 'Indesign',      level: 80 },
+      { name: 'After Effect',  level: 80 },
+      { name: 'Premiere Pro',  level: 80 },
+      { name: 'Figma',         level: 85 },
+    ],
   },
   {
-    "category":{
-      en:"Tools & AI",
-      fr:"Outils et IA"
-    },
-    "icon": "⚡",
-    "skills": [
-      {
-        "name": "GitHub + Copilot AI",
-        "level": 90
-      },
-      {
-        "name": "Claude AI",
-        "level": 92
-      },
-      {
-        "name": "Copilot AI",
-        "level": 88
-      },
-      {
-        "name": "Affinity AI",
-        "level": 85
-      },
-      {
-        "name": "Adobe AI",
-        "level": 90
-      }
-    ]
-  }
-
+    // Tools & AI
+    // category: t('skills.columns.2.category') — in locales.json
+    icon: '⚡',
+    skills: [
+      { name: 'Claude AI, Gemini AI',             level: 90 },
+      { name: 'Adobe AI, Affinity AI',            level: 85 },
+      { name: 'Agile Scrum, Kanban, Code Review', level: 80 },
+      { name: 'Mobile-first, WCAG Accessibility', level: 80 },
+      { name: 'Git, GitHub + Copilot AI',         level: 80 },
+      { name: 'Jira, Confluance',                 level: 80 },
+      { name: 'Vite, Webpack, npm/yarn',          level: 80 },
+      { name: 'Cypress, Jest, React Testing',     level: 80 },
+    ],
+  },
 ];
+
+// ── Recaptcha config  ────────────────────────────────────────────────────────
+export const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+
+// ── EmailJS config ────────────────────────────────────────────────────────
+export const EJS_PUBLIC_KEY       = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+export const EJS_SERVICE_ID       = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+export const EJS_TEMPLATE_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT;
+export const EJS_TEMPLATE_REPLY   = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY;
+
+export const EMPTY        = { name: '', email: '', message: '', _trap: '' };
+export const EMPTY_ERRORS = { name: '',  email: '',  message: ''  };
+export const EMPTY_TOUCHED = { name: false, email: false, message: false };
+export const COOLDOWN_MS  = 60_000;
+export const EMAIL_REGEX  = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 
 // ─── Projects Carousel ────────────────────────────────────────────────────────
@@ -371,13 +318,14 @@ export const titleLineVariants = {
 
 export const NAV_HEIGHT = 64 // px
 
+// ─── Navigation ──────────────────────────────────────────────────────────────
+// Order matches page section order: About → Experience → Projects → Skills → Contact
 export const NAV_LINKS = [
-  { key: 'nav.about',      href: '#about' },
-  { key: 'nav.work',       href: '#experience' },
-  { key: 'nav.experience', href: '#experience' },
-  { key: 'nav.projects',   href: '#projects' },
-  { key: 'nav.skills',     href: '#skills' },
-  { key: 'nav.contacts',   href: '#contacts' },
+  { key: 'nav.about',      href: '#about'      },
+  { key: 'nav.experiences', href: '#experience' },
+  { key: 'nav.projects',   href: '#projects'   },
+  { key: 'nav.skills',     href: '#skills'     },
+  { key: 'nav.contacts',   href: '#contacts'   },
 ];
 
 // ─── Brand ───────────────────────────────────────────────────────────────────
