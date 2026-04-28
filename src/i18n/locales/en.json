@@ -1,8 +1,7 @@
 {
   "nav": {
     "about": "About",
-    "work": "Work",
-    "experience": "Experience",
+    "experiences": "Experiences",
     "projects": "Projects",
     "skills": "Skills",
     "contacts": "Contacts"
@@ -31,12 +30,12 @@
     "am_i": "AM I",
     "p1": "Front-end developer who designs. Designer who codes.",
     "p2": "I'm the rare person who moves from visual concept to functional front-end code — bridging the gap myself between the UI, the API, and the database. I deliver both sides of the project, with no friction between design and code, no middleman between the vision and the final product.",
-    "cv": "Curriculum Vitae",
-    "p3": "12 years in art direction and graphic design. 7 years shipping React interfaces in production."
+    "p3": "12 years in art direction and graphic design. 7 years shipping React interfaces in production.",
+    "cv": "Curriculum Vitae"
   },
   "experience": {
     "section_pre": "Work",
-    "section_bold": "EXPERIENCE",
+    "section_bold": "EXPERIENCES",
     "jobs": [
       {
         "period": "2018 - 2026",
@@ -105,94 +104,13 @@
     "section": "SKILLS",
     "columns": [
       {
-        "category": "Development",
-        "icon": "{ }",
-        "skills": [
-          {
-            "name": "JavaScript",
-            "level": 95
-          },
-          {
-            "name": "Typescript",
-            "level": 65
-          },
-          {
-            "name": "Node.js",
-            "level": 90
-          },
-          {
-            "name": "React",
-            "level": 95
-          },
-          {
-            "name": "Next",
-            "level": 40
-          },
-          {
-            "name": "Angular",
-            "level": 40
-          },
-          {
-            "name": "Redux & Redux Thunk",
-            "level": 85
-          },
-          {
-            "name": "CSS/SCSS/SASS/Styled",
-            "level": 98
-          }
-        ]
+        "category": "Development"
       },
       {
-        "category": "Design & UX/UI",
-        "icon": "✦",
-        "skills": [
-          {
-            "name": "Figma",
-            "level": 75
-          },
-          {
-            "name": "Adobe XD",
-            "level": 85
-          },
-          {
-            "name": "Affinity",
-            "level": 95
-          },
-          {
-            "name": "Adobe CC",
-            "level": 82
-          },
-          {
-            "name": "Branding",
-            "level": 88
-          }
-        ]
+        "category": "Design & UX/UI"
       },
       {
-        "category": "Tools & AI",
-        "icon": "⚡",
-        "skills": [
-          {
-            "name": "GitHub + Copilot AI",
-            "level": 90
-          },
-          {
-            "name": "Claude AI",
-            "level": 92
-          },
-          {
-            "name": "Copilot AI",
-            "level": 88
-          },
-          {
-            "name": "Affinity AI",
-            "level": 85
-          },
-          {
-            "name": "Adobe AI",
-            "level": 90
-          }
-        ]
+        "category": "Tools & AI"
       }
     ]
   },
@@ -222,6 +140,6 @@
       "github": "GitHub",
       "email": "Email"
     },
-    "copyright": "©2026 Cristian Manrique"
+    "copyright": "All rights reserved"
   }
 }

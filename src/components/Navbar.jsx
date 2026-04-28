@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   EASE_OUT_EXPO, NAV_LINKS,
   BRAND_NAME,
@@ -8,6 +7,7 @@ import {
  } from '../components/Constants';
 
 import useTranslate from '../hooks/useTranslate';
+import Portfolio from '../assets/Portfolio';
 
 import * as Styled from '../components/PortfolioStyled';
 
@@ -21,23 +21,32 @@ const Navbar = () => {
     : '/cristian_manrique_cv_fr.pdf';
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onRezise = () => setMenuOpen(false);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      onRezise();
+    };
+
     window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener('resize', onRezise);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, [])
 
-  const handleNav = (e, href) => {
+  const handleNav = useCallback((e, href) => {
     e.preventDefault();
     setMenuOpen(false);
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
-  }
+  },[setMenuOpen]);
 
-  const handleLogoClick = e => {
+  const handleLogoClick = useCallback((e) => {
     e.preventDefault();
     setMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  },[setMenuOpen]);
 
   return (
     <Styled.NavbarNav
@@ -74,6 +83,13 @@ const Navbar = () => {
           {langLabel}
         </Styled.NavbarLangButton>
         </div>
+        <Styled.NavbarPortfolioLink
+          href="/portfolio_cm.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Portfolio />
+        </Styled.NavbarPortfolioLink>
       </Styled.NavbarLinks>
 
       <Styled.NavbarHamburger onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">
@@ -102,7 +118,16 @@ const Navbar = () => {
           >
             CV
           </Styled.NavbarLink>
-          <Styled.NavbarMobileLangButton onClick={switchLang}>{langLabel}</Styled.NavbarMobileLangButton>
+          <Styled.NavbarMobileLangButton onClick={switchLang}>
+            {langLabel}
+          </Styled.NavbarMobileLangButton>
+          <Styled.NavbarPortfolioLink
+            href="/portfolio_cm.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Portfolio />
+          </Styled.NavbarPortfolioLink>
         </Styled.NavbarMobileMenu>
       )}
     </Styled.NavbarNav>

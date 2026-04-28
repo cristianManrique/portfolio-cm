@@ -10,7 +10,7 @@ export const handler = async (event) => {
   try { body = JSON.parse(event.body); }
   catch { return err('Invalid JSON', 400); }
 
-  const { title, description, images, tags, github, order } = body;
+  const { title, description, images, tags, github, demo, order } = body;
 
   if (!title?.en || !title?.fr)             return err('title.en and title.fr required', 400);
   if (!description?.en || !description?.fr) return err('description.en and description.fr required', 400);
@@ -22,6 +22,7 @@ export const handler = async (event) => {
       images: images || [],
       tags:   tags   || [],
       github: github || null,
+      demo:   demo   || null,
       order:  order  ?? 0,
     });
     return ok(project);

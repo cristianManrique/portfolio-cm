@@ -3,25 +3,35 @@ import emailjs                     from '@emailjs/browser';
 import ReCAPTCHA                   from 'react-google-recaptcha';
 import { AnimatePresence }         from 'motion/react';
 import useTranslate                from '../hooks/useTranslate';
-import { EASE_OUT_EXPO }           from '../components/Constants';
-import * as Styled                 from '../components/PortfolioStyled';
+import {
+RECAPTCHA_SITE_KEY,
+EJS_PUBLIC_KEY,
+EJS_SERVICE_ID,
+EJS_TEMPLATE_CONTACT,
+EJS_TEMPLATE_REPLY,
+EMPTY,
+EMPTY_ERRORS,
+EMPTY_TOUCHED,
+COOLDOWN_MS,
+EMAIL_REGEX,
+EASE_OUT_EXPO
+} from '../components/Constants';
+import * as Styled from '../components/PortfolioStyled';
 
-const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || null;
+// ── Component ─────────────────────────────────────────────────────────────────
+const ContactForm = () => {
+  const { t, isEN }             = useTranslate();
+  const captchaRef              = useRef(null);
+  const [form, setForm]         = useState(EMPTY);
+  const [errors, setErrors]     = useState(EMPTY_ERRORS);
+  const [touched, setTouched]   = useState(EMPTY_TOUCHED);
+  const [captchaDone, setCaptchaDone] = useState(false);
+  const [status, setStatus]     = useState(null);   // null | 'sending' | 'ok' | 'error' | 'cooldown'
+  const [disabled, setDisabled] = useState(false);
 
-// ── EmailJS config (VITE_ prefix = exposed to browser bundle) ─────────────────
-const EJS_PUBLIC_KEY       = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const EJS_SERVICE_ID       = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const EJS_TEMPLATE_CONTACT = import.meta.env.VITE_EMAILJS_TEMPLATE_CONTACT;
-const EJS_TEMPLATE_REPLY   = import.meta.env.VITE_EMAILJS_TEMPLATE_REPLY;
+  const setField = (k, v) => setForm(prev => ({ ...prev, [k]: v }));
 
-const EMPTY        = { name: '', email: '', message: '', _trap: '' };
-const EMPTY_ERRORS = { name: '',  email: '',  message: ''  };
-const EMPTY_TOUCHED = { name: false, email: false, message: false };
-const COOLDOWN_MS  = 60_000;
-const EMAIL_REGEX  = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-// ── Auto-reply copy per language ───────────────────────────────────────────────
-const replyContent = (name, isEN) => isEN
+  const replyContent = (name, isEN) => isEN
   ? {
       greeting : `Hello ${name},`,
       body     : `Thank you for reaching out! I've received your message and will get back to you within 3 business days.\n\nIn the meantime, feel free to explore my portfolio at crisman.dev.`,
@@ -32,20 +42,6 @@ const replyContent = (name, isEN) => isEN
       body     : `Merci de m'avoir contacté ! J'ai bien reçu votre message et vous répondrai dans un délai de 3 jours ouvrables.\n\nEn attendant, n'hésitez pas à explorer mon portfolio sur crisman.dev.`,
       sign     : 'Cordialement,\n <- Cristian Manrique ->\n/* Front-End developer - Graphic Web Designer UI/UX */',
     };
-
-// ── Component ─────────────────────────────────────────────────────────────────
-const ContactForm = () => {
-  const { t, isEN }             = useTranslate();
-  const captchaRef              = useRef(null);
-  const [form, setForm]         = useState(EMPTY);
-  const [errors, setErrors]     = useState(EMPTY_ERRORS);
-  const [touched, setTouched]   = useState(EMPTY_TOUCHED);
-  // If no sitekey is configured, bypass captcha requirement
-  const [captchaDone, setCaptchaDone] = useState(!RECAPTCHA_SITE_KEY);
-  const [status, setStatus]     = useState(null);   // null | 'sending' | 'ok' | 'error' | 'cooldown'
-  const [disabled, setDisabled] = useState(false);
-
-  const setField = (k, v) => setForm(prev => ({ ...prev, [k]: v }));
 
   // ── Validate a single field, returns error key or '' ──────────────────────
   const validateField = (k, v) => {
@@ -94,7 +90,7 @@ const ContactForm = () => {
     const reply = replyContent(form.name, isEN);
 
     try {
-      // 1 — Notify owner
+      // 1 — Notify gabrielcris@gmail.com
       await emailjs.send(
         EJS_SERVICE_ID,
         EJS_TEMPLATE_CONTACT,
@@ -125,10 +121,8 @@ const ContactForm = () => {
       setForm(EMPTY);
       setErrors(EMPTY_ERRORS);
       setTouched(EMPTY_TOUCHED);
-      if (RECAPTCHA_SITE_KEY) {
-        setCaptchaDone(false);
-        setTimeout(() => captchaRef.current?.reset(), 500);
-      }
+      setCaptchaDone(false);
+      setTimeout(() => captchaRef.current?.reset(), 500);
 
       // Hide success message after 4s, keep form disabled for full cooldown
       setTimeout(() => setStatus(null), 4_000);
@@ -138,10 +132,8 @@ const ContactForm = () => {
 
     } catch (err) {
       console.error('[ContactForm] EmailJS error:', err?.text || err);
-      if (RECAPTCHA_SITE_KEY) {
-        setCaptchaDone(false);
-        setTimeout(() => captchaRef.current?.reset(), 500);
-      }
+      setCaptchaDone(false);
+      setTimeout(() => captchaRef.current?.reset(), 500);
       setStatus('error');
     }
   };
@@ -241,18 +233,16 @@ const ContactForm = () => {
             )}
           </div>
 
-          {/* ── reCAPTCHA v2 (skipped when VITE_RECAPTCHA_SITE_KEY is not set) ── */}
-          {RECAPTCHA_SITE_KEY && (
-            <Styled.ContactCaptchaRow>
-              <ReCAPTCHA
-                ref={captchaRef}
-                sitekey={RECAPTCHA_SITE_KEY}
-                theme="dark"
-                onChange={(token) => setCaptchaDone(!!token)}
-                onExpired={() => setCaptchaDone(false)}
-              />
-            </Styled.ContactCaptchaRow>
-          )}
+          {/* ── reCAPTCHA v2 ── */}
+          <Styled.ContactCaptchaRow>
+            <ReCAPTCHA
+              ref={captchaRef}
+              sitekey={RECAPTCHA_SITE_KEY}
+              theme="dark"
+              onChange={(token) => setCaptchaDone(!!token)}
+              onExpired={() => setCaptchaDone(false)}
+            />
+          </Styled.ContactCaptchaRow>
 
           {/* ── Honeypot — hidden from real users, bots fill it ─────────────── */}
           <input

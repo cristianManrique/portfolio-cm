@@ -13,7 +13,7 @@ export const handler = async (event) => {
   try { body = JSON.parse(event.body); }
   catch { return err('Invalid JSON', 400); }
 
-  const { title, description, images, tags, github, order } = body;
+  const { title, description, images, tags, github, demo, order } = body;
   if (!title?.en || !title?.fr)             return err('title.en and title.fr required', 400);
   if (!description?.en || !description?.fr) return err('description.en and description.fr required', 400);
 
@@ -21,7 +21,7 @@ export const handler = async (event) => {
     await connectDB();
     const updated = await Project.findByIdAndUpdate(
       id,
-      { title, description, images, tags, github, order },
+      { title, description, images, tags, github, demo, order },
       { new: true }
     );
     if (!updated) return err('Project not found', 404);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { AnimatePresence } from 'motion/react';
+import { apiGet } from '../utils/Api';
 import {
   PROJECTS,
   CAROUSEL_CARD_WIDTH,
@@ -19,8 +20,28 @@ const Projects = () => {
   const [selected, setSelected] = useState(null);
   const [visible, setVisible]   = useState(3);
   const [cardWidth, setCardWidth] = useState(CAROUSEL_CARD_WIDTH);
+  const [projects, setProjects] = useState(PROJECTS);
   const trackRef                = useRef(null);
   const lang = isEN ? 'en' : 'fr';
+
+  // ── Fetch projects from API, fallback to Constants ────────────────────────
+  const fetchProjects = useCallback(() => {
+    apiGet('/api/projects-get')
+      .then(({ data }) => {
+        if (Array.isArray(data) && data.length) {
+          setProjects(data);
+          console.log('[Projects] DB loaded —', data.length, 'projects');
+        }
+      })
+      .catch((err) => console.warn('[Projects] API unavailable, using fallback —', err.message));
+  }, []);
+
+  useEffect(() => {
+    fetchProjects();
+    const channel = new BroadcastChannel('portfolio-sync');
+    channel.onmessage = (e) => { if (e.data?.type === 'projects-updated') fetchProjects(); };
+    return () => channel.close();
+  }, [fetchProjects]);
 
   // ── Calculate cards visible from container width ──────────────────────────
   const calcVisible = useCallback(() => {
@@ -38,21 +59,21 @@ const Projects = () => {
 
   useEffect(() => {
     const el = trackRef.current
-    if (!el) return
+    if (!el) return;
     calcVisible()
     const ro = new ResizeObserver(calcVisible)
     ro.observe(el)
     return () => ro.disconnect()
   }, [calcVisible]);
 
-  const maxIndex = Math.max(0, PROJECTS.length - visible);
+  const maxIndex = Math.max(0, projects.length - visible);
 
   useEffect(() => {
     setIndex(i => Math.min(i, maxIndex))
   }, [maxIndex]);
 
-  const prev = () => setIndex(i => Math.max(0, i - 1));
-  const next = () => setIndex(i => Math.min(maxIndex, i + 1));
+  const prev = useCallback(() => setIndex(i => Math.max(0, i - 1)),[setIndex]);
+  const next = useCallback(() => setIndex(i => Math.min(maxIndex, i + 1)),[setIndex]);
 
   return (
     <Styled.ProjectsSection id="projects">
@@ -99,8 +120,8 @@ const Projects = () => {
               animate={{ x: -(index * (cardWidth + CAROUSEL_CARD_GAP)) }}
               transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
             >
-              {PROJECTS.map(project => (
-                <div key={project.id} data-card>
+              {projects.map(project => (
+                <div key={project._id || project.id} data-card>
                   <ProjectCard
                     project={project}
                     onClick={() => setSelected(project)}

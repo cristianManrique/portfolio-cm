@@ -115,14 +115,20 @@ const StarTrail = ({
   useEffect(() => {
     const canvas = canvasRef.current;
     // willReadFrequently = false here (we only write), but set alpha: true
-    const ctx = canvas.getContext("2d", { alpha: true });
+    // alpha:false — canvas composites on top of a solid bg, no transparency artifacts
+    const ctx = canvas.getContext("2d", { alpha: false });
 
-    // Set initial size
+    // Declare bgFill FIRST — resize() needs it immediately
+    const [r, g, b] = toRgb(background);
+    const bgFill = `rgba(${r},${g},${b},${trailAlpha})`;
+
+    // Set initial size and paint bg immediately — never shows white
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
+    ctx.fillStyle = bgFill;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // On resize: only reset if dimensions actually changed,
-    // then immediately repaint bg to avoid white flash
+    // On resize: only reset if dimensions actually changed
     let resizeTimer = null;
     const resize = () => {
       const w = window.innerWidth;
@@ -130,21 +136,18 @@ const StarTrail = ({
       if (canvas.width === w && canvas.height === h) return;
       canvas.width  = w;
       canvas.height = h;
-      // Repaint background immediately so the reset canvas is never white
+      // bgFill is now declared above — no longer undefined
       ctx.fillStyle = bgFill;
       ctx.fillRect(0, 0, w, h);
     };
 
-    // Debounced resize — fire immediately on first call, then wait 100ms
+    // Debounced resize — fire immediately, then settle after 100ms
     const onResize = () => {
-      resize(); // immediate repaint on every resize event
+      resize();
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(resize, 100);
     };
     window.addEventListener("resize", onResize);
-
-    const [r, g, b] = toRgb(background);
-    const bgFill = `rgba(${r},${g},${b},${trailAlpha})`;
 
     const loop = () => {
       ctx.fillStyle = bgFill;
@@ -174,12 +177,27 @@ const StarTrail = ({
 
   // ── Input listeners ────────────────────────────────────────────────────────
   useEffect(() => {
-    const onMove  = e => spawn(e.clientX, e.clientY);
-    const onTouch = e => spawn(e.touches[0].clientX, e.touches[0].clientY);
+    const onMove = e => spawn(e.clientX, e.clientY);
+
+    // Track touch start to distinguish scroll (vertical) from swipe (any direction)
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const onTouchStart = e => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    };
+
+    const onTouch = e => {
+      spawn(e.touches[0].clientX, e.touches[0].clientY);
+    };
+
     window.addEventListener("mousemove", onMove);
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
     window.addEventListener("touchmove", onTouch, { passive: true });
     return () => {
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchmove", onTouch);
     };
   }, [spawn]);

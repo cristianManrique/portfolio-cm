@@ -1,51 +1,43 @@
 import React, { useState } from 'react';
-import { useNavigate }     from 'react-router-dom';
-import styled              from 'styled-components';
-import { motion }          from 'motion/react';
+import { useNavigate }      from 'react-router-dom';
+import styled               from 'styled-components';
+import { motion }           from 'motion/react';
 
-// ─────────────────────────────────────────────────────────────────────────────
-// DEMO PLACEHOLDER
-// In production this page authenticates against a Netlify Function that:
-//   - verifies the password with bcryptjs
-//   - returns a signed JWT (8 h expiry)
-//   - the token is stored in sessionStorage and sent as Bearer on every API call
-// See: netlify/functions/auth-login.js
-// ─────────────────────────────────────────────────────────────────────────────
-
+// ── Styled ────────────────────────────────────────────────────────────────────
 const Page = styled.div`
   min-height: 100vh;
+  background: var(--bg-deep, #021a2b);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-deep, #021a2b);
   font-family: var(--font-body);
-  padding: 1.5rem;
+  padding: 2rem;
 `;
 
-const Card = styled.div`
+const Card = styled(motion.div)`
   width: 100%;
   max-width: 380px;
   background: var(--bg-card, #0a3a52);
-  border: 1px solid var(--border-dim, rgba(0,180,200,.2));
+  border: 1px solid rgba(0, 180, 200, 0.2);
   border-top: 3px solid var(--accent, #00b4c8);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 2.5rem 2rem;
 `;
 
-const Title = styled.h1`
+const Logo = styled.div`
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--white, #fff);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin: 0 0 0.4rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
   span { color: var(--accent, #00b4c8); }
 `;
 
-const Sub = styled.p`
-  font-size: 0.78rem;
+const Subtitle = styled.p`
+  font-size: 0.75rem;
   color: var(--text-muted, #a0c4d8);
+  letter-spacing: 0.06em;
   margin: 0 0 2rem;
 `;
 
@@ -55,17 +47,17 @@ const Label = styled.label`
   color: var(--text-muted, #a0c4d8);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 0.3rem;
+  margin: 0 0 0.3rem;
 `;
 
 const Input = styled.input`
   width: 100%;
-  background: rgba(0,0,0,.25);
-  border: 1px solid var(--border-dim, rgba(0,180,200,.2));
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-dim, rgba(0, 180, 200, 0.2));
   border-radius: 4px;
-  padding: 0.55rem 0.75rem;
+  padding: 0.55rem 0.85rem;
   color: var(--white, #fff);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   outline: none;
   box-sizing: border-box;
   margin-bottom: 1.2rem;
@@ -91,77 +83,76 @@ const SubmitBtn = styled(motion.button)`
 
 const DemoBanner = styled.div`
   margin-top: 1.5rem;
-  padding: 0.65rem 0.9rem;
-  background: rgba(0,180,200,.08);
-  border: 1px solid rgba(0,180,200,.2);
+  padding: 0.85rem 1rem;
+  background: rgba(244, 162, 97, 0.1);
+  border: 1px solid rgba(244, 162, 97, 0.35);
   border-radius: 4px;
   font-size: 0.72rem;
-  color: var(--text-muted, #a0c4d8);
-  line-height: 1.5;
-  a {
-    color: var(--accent, #00b4c8);
-    text-decoration: none;
-    &:hover { text-decoration: underline; }
+  color: #f4a261;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  code {
+    font-size: 0.68rem;
+    opacity: 0.8;
   }
 `;
 
-const StatusMsg = styled.div`
-  font-size: 0.8rem;
-  padding: 0.5rem 0.75rem;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-  background: rgba(230,57,70,.12);
-  color: #e63946;
-`;
-
-// ── Component ─────────────────────────────────────────────────────────────────
+// ── Component (PLACEHOLDER — no real authentication) ──────────────────────────
+//
+//  In production, handleSubmit calls:
+//    POST /.netlify/functions/auth-login  { password }
+//  which verifies bcrypt(ADMIN_PASSWORD_HASH) and returns { token }.
+//  The token is stored in sessionStorage and attached via the Axios interceptor
+//  in src/utils/Api.js to every subsequent admin request.
+//
 const AdminLogin = () => {
-  const navigate          = useNavigate();
+  const navigate = useNavigate();
   const [password, setPassword] = useState('');
-  const [error, setError]       = useState('');
+  const [msg, setMsg]           = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // ── DEMO MODE ──────────────────────────────────────────────────────────────
-    // Real implementation: POST to /.netlify/functions/auth-login
-    // Returns { token } → stored in sessionStorage → redirect to /admin
-    // ──────────────────────────────────────────────────────────────────────────
-    setError('Demo mode — configure your .env to connect a live backend.');
+    setMsg('Demo mode — configure your .env to connect a live backend.');
   };
 
   return (
     <Page>
-      <Card>
-        <Title>&lt;- <span>Admin</span> -&gt;</Title>
-        <Sub>Portfolio CMS — restricted access</Sub>
-
-        {error && <StatusMsg>{error}</StatusMsg>}
+      <Card
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45 }}
+      >
+        <Logo>&lt;- <span>Admin</span> -&gt;</Logo>
+        <Subtitle>CMS Dashboard — Portfolio</Subtitle>
 
         <form onSubmit={handleSubmit}>
-          <Label htmlFor="al-password">Password</Label>
+          <Label>Password</Label>
           <Input
-            id="al-password"
             type="password"
-            autoComplete="current-password"
-            placeholder="••••••••"
             value={password}
-            onChange={e => { setPassword(e.target.value); setError(''); }}
+            onChange={e => setPassword(e.target.value)}
+            autoFocus
+            placeholder="••••••••"
           />
+
+          {msg && (
+            <p style={{ fontSize: '0.78rem', color: '#f4a261', marginBottom: '0.75rem' }}>
+              ⚠ {msg}
+            </p>
+          )}
+
           <SubmitBtn type="submit" whileTap={{ scale: 0.97 }}>
-            Login
+            Se connecter
           </SubmitBtn>
         </form>
 
         <DemoBanner>
-          <strong style={{ color: 'var(--accent, #00b4c8)' }}>Demo placeholder</strong>
-          <br />
-          The real admin connects to a{' '}
-          <a href="https://www.netlify.com/products/functions/" target="_blank" rel="noreferrer">
-            Netlify serverless API
-          </a>{' '}
-          + MongoDB Atlas via JWT auth.
-          <br />
-          See <code style={{ fontSize: '0.7rem' }}>netlify/functions/auth-login.js</code>
+          <strong>Alpha / Demo mode</strong> — authentication is disabled in this public
+          version. In production, this calls{' '}
+          <code>netlify/functions/auth-login.js</code>, verifies a bcrypt hash and
+          returns a signed JWT stored in <code>sessionStorage</code>.
+          <br /><br />
+          Required env vars: <code>ADMIN_PASSWORD_HASH</code> · <code>ADMIN_JWT_SECRET</code>
         </DemoBanner>
       </Card>
     </Page>

@@ -78,7 +78,7 @@ const About = () => {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <Styled.AboutPara>{t('about.p1')}</Styled.AboutPara>
+            <Styled.AboutParaBold>{t('about.p1')}</Styled.AboutParaBold>
             <Styled.AboutPara>{t('about.p2')}</Styled.AboutPara>
             <Styled.AboutPara>{t('about.p3')}</Styled.AboutPara>
           </Styled.AboutRightCol>
@@ -88,4 +88,4 @@ const About = () => {
   )
 }
 
-export default About
+export default About;

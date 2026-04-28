@@ -116,18 +116,33 @@ const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
             </div>
           )}
 
-          {/* GitHub button — only if github url exists */}
-          {project.github && (
-            <Styled.LightboxGithubBtn
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ x: 3 }}
-              transition={{ duration: 0.2 }}
-            >
-              <GitHubIcon />
-              View on GitHub
-            </Styled.LightboxGithubBtn>
+          {/* CTA buttons — GitHub + Live Demo */}
+          {(project.github || project.demo) && (
+            <Styled.LightboxBtnRow>
+              {project.github && (
+                <Styled.LightboxGithubBtn
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ x: 3 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <GitHubIcon />
+                  View on GitHub
+                </Styled.LightboxGithubBtn>
+              )}
+              {project.demo && (
+                <Styled.LightboxDemoBtn
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ x: 3 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Live Demo ↗
+                </Styled.LightboxDemoBtn>
+              )}
+            </Styled.LightboxBtnRow>
           )}
         </Styled.LightboxPanel>
 

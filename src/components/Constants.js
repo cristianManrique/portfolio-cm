@@ -8,84 +8,92 @@ import { v4 as uuidv4 } from 'uuid'
 
 // ─── API Data ─────────────────────────────────────────────────────────────
 export const PROJECTS = [
+  // ── 1 ─────────────────────────────────────────────────────────────────────
   {
     id: uuidv4(),
     title: {
-      en: "Confidential Client — Automotive Sector",
-      fr: "Client confidentiel — secteur automobile"
+      en: '<- Cristian Manrique -> — Portfolio && CMS Dashboard',
+      fr: '<- Cristian Manrique -> — Portfolio && Tableau de bord CMS',
     },
-    images: [
-      '/projects/project-placeholder.svg',
-    ],
+    images: ['/projects/project-placeholder.svg'],
     description: {
-      en: 'Redesign of a complex web application for a major automotive client. Focus on improving UX  and implementing new features using React and Redux. Fictional mockup for demonstration purposes only. All data displayed is fictitious.',
-      fr: 'Refonte d’une application web complexe pour un grand client du secteur automobile. Accent sur l’amélioration de l’UX et l’implémentation de nouvelles fonctionnalités avec React et Redux. Maquette fictive à des fins de démonstration uniquement. Toutes les données affichées sont fictives.'},
-    tags: ['React', 'Redux', 'Figma', 'Styled Components', 'Adobe XD'],
+      en: 'Build my portfolio that manages itself. Update projects, swap images and reorder content live, without touching the code. SOLUTION: Full-stack CMS with JWT admin dashboard, bilingual CRUD, drag-and-drop reordering and Cloudinary image uploads. Data persisted in MongoDB Atlas via Netlify serverless functions. Architecture built in close collaboration with Claude AI.',
+      fr: 'Construire mon portfolio qui se gère lui-même. Mettre à jour les projets, changer les images et réordonner le contenu en direct, sans toucher au code. SOLUTION : CMS full-stack avec dashboard admin JWT, CRUD bilingue, réorganisation drag-and-drop et upload Cloudinary. Données persistées dans MongoDB Atlas via les fonctions serverless Netlify. Architecture développée en collaboration étroite avec Claude AI.',
+    },
+    tags: ['React', 'React Router', 'MongoDB', 'Netlify Functions', 'Cloudinary', 'JWT', 'Node.js'],
+    github: 'https://github.com/cristianManrique/portfolio-cm',
+    demo: 'https://crisman.dev',
+  },
+
+  // ── 2 ─────────────────────────────────────────────────────────────────────
+  {
+    id: uuidv4(),
+    title: {
+      en: 'Notes Dashboard — Kanban Board',
+      fr: 'Tableau de bord Notes — Kanban',
+    },
+    images: ['/projects/project-placeholder.svg'],
+    description: {
+      en: 'Personal project — a drag-and-drop Kanban board to master modern front-end engineering concepts. 3-column board (To Do · In Progress · Done) with note management, dark/light mode, and persistent storage. Built step by step, from skeleton to production-ready app.',
+      fr: 'Projet personnel — un tableau Kanban drag-and-drop pour maîtriser des concepts front-end modernes. 3 colonnes (À faire · En cours · Terminé) avec gestion des notes, mode sombre/clair et stockage persistant. Construit pas à pas, du squelette à l\'app prête pour la production.',
+    },
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Redux Toolkit', 'Context API', 'dnd-kit', 'Prisma + SQLite', 'Jest + RTL'],
+    github: 'https://github.com/cristianManrique/notes-dashboard',
+    demo: 'https://notes-dashboard-demo.netlify.app/',
+  },
+
+  // ── 3 ─────────────────────────────────────────────────────────────────────
+  {
+    id: uuidv4(),
+    title: {
+      en: 'AI Form Builder — Claude AI',
+      fr: 'Générateur de formulaires IA — Claude AI',
+    },
+    images: ['/projects/project-placeholder.svg'],
+    description: {
+      en: 'Internal tooling project for the automotive sector. Developed an AI-assisted workflow to accelerate form creation — reducing a multi-step manual process to a matter of minutes. SOLUTION: Integration of Claude AI with React to automate form structure generation, JSON schema output, and a live preview rendering. Internal tooling project — data anonymized for confidentiality.',
+      fr: 'Outil interne pour le secteur automobile. Développement d\'un workflow assisté par IA pour accélérer la création de formulaires — réduisant un processus manuel de plusieurs étapes à quelques minutes. SOLUTION : Intégration de Claude AI avec React pour automatiser la génération de structure, l\'export JSON Schema et le rendu live. Données anonymisées.',
+    },
+    tags: ['Claude AI', 'React', 'PDF Analysis', 'JSON Schema', 'i18n', 'UX'],
     github: null,
+    demo: null,
   },
+
+  // ── 4 ─────────────────────────────────────────────────────────────────────
   {
     id: uuidv4(),
     title: {
-      en: "Adwords Campaign - Chart & Dashboard",
-      fr: "Campagne Adwords - Graphiques & Tableau de bord"
+      en: 'Confidential Client — Automotive Sector',
+      fr: 'Client confidentiel — Secteur automobile',
     },
-    images: [
-      '/projects/project-placeholder.svg',
-    ],
+    images: ['/projects/project-placeholder.svg'],
     description: {
-      en: 'Google AdWords campaign data visualized with interactive charts. Doughnut + line charts per keyword showing clicks, conversions and impressions over time.',
-      fr: 'Données de campagne Google AdWords visualisées avec des graphiques interactifs. Graphiques en anneau et linéaires par mot-clé montrant les clics, conversions et impressions au fil du temps.'
+      en: 'Large-scale front-end project in the automotive sector. Redesign of a complex web application with a focus on UX improvement and performance. SOLUTION: Built with React and Redux, new component-based architecture and a unified design system from Figma and Adobe XD mockups. Client data anonymized — production project under NDA.',
+      fr: 'Projet front-end de grande envergure dans le secteur automobile. Refonte d\'une application web complexe axée sur l\'amélioration de l\'UX et la performance. SOLUTION : Architecture React/Redux avec nouveau système de composants et design system unifié (Figma, Adobe XD). Données client anonymisées — projet en production sous NDA.',
     },
-    tags: ['React 18', 'React Router v6', 'React Chart v4', 'ESLint', 'Prettier'],
-      github: 'https://github.com/cristianManrique/myAdwordsCampaign-React',
+    tags: ['React', 'Redux', 'React Router', 'Design System', 'Figma', 'Adobe XD'],
+    github: null,
+    demo: null,
   },
-  {
-  id: uuidv4(),
-  title: {
-    en: "React Image Gallery",
-    fr: "Galerie d’images React"
-  },
-  images: [
-    '/projects/project-placeholder.svg',
-  ],
-  description: {
-    en: "Interactive image gallery built with React. Features include dynamic image loading, responsive grid layout, and smooth user interactions. Focus on clean UI and performance.",
-    fr: "Galerie d’images interactive développée avec React. Inclut un chargement dynamique des images, une grille responsive et des interactions fluides. Accent sur une interface propre et performante."
-  },
-  tags: ['React', 'React Bootstrap', 'ESLint', 'Prettier'],
-  github: 'https://github.com/cristianManrique/img-gallery-react',
- },
+
+  // ── Coming soon ────────────────────────────────────────────────────────────
   {
     id: uuidv4(),
-    title: {
-      en: "Brand Identity",
-      fr: "Identité de la marque"
-    },
-    images: [
-      '/projects/project-placeholder.svg',
-      '/projects/project-placeholder.svg',
-    ],
-    description: {
-      en: 'Coming soon.',
-      fr: 'Bientôt disponible.'
-    },
+    title: { en: 'Brand Identity', fr: 'Identité de marque' },
+    images: ['/projects/project-placeholder.svg'],
+    description: { en: 'Coming soon.', fr: 'Bientôt disponible.' },
     tags: ['Figma', 'Affinity', 'Adobe XD'],
     github: null,
+    demo: null,
   },
   {
     id: uuidv4(),
-    title: {
-      en: "Next Application",
-      fr: "Application Next"
-    },
-    images: [
-      '/projects/project-placeholder.svg',
-    ],
-    description: {
-      en: 'Coming soon.',
-      fr: 'Bientôt disponible.'
-    },
-    tags: ['Next.js', 'Tailwind CSS', 'GitHub'],
+    title: { en: 'Next.js Application', fr: 'Application Next.js' },
+    images: ['/projects/project-placeholder.svg'],
+    description: { en: 'Coming soon.', fr: 'Bientôt disponible.' },
+    tags: ['Next.js', 'Tailwind CSS', 'TypeScript'],
+    github: null,
+    demo: null,
   },
 ];
 
@@ -164,8 +172,8 @@ export const EXPERIENCE = [
     },
     period: '2006 - 2011',
     description: {
-      en: 'Led art direction for major clients including Loto-Québec (La Poule aux œufs d’or, Gagnant à Vie). Produced posters, DVD covers, and magazine spreads. Managed prepress and offset printing.',
-      fr: 'Direction artistique pour des clients majeurs dont Loto-Québec (La Poule aux œufs d’or, Gagnant à Vie). Réalisation d’affiches, boîtiers DVD et doubles pages. Gestion du prépresse et impression offset.'
+      en: 'Led art direction for major clients including Loto-Québec (La Poule aux œufs d\'or, Gagnant à Vie). Produced posters, DVD covers, and magazine spreads. Managed prepress and offset printing.',
+      fr: 'Direction artistique pour des clients majeurs dont Loto-Québec (La Poule aux œufs d\'or, Gagnant à Vie). Réalisation d\'affiches, boîtiers DVD et doubles pages. Gestion du prépresse et impression offset.'
     },
   },
 ];

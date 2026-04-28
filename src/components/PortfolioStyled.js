@@ -1293,6 +1293,13 @@ export const LightboxTag = styled.span`
   }
 `
 
+export const LightboxBtnRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+`
+
 export const LightboxGithubBtn = styled(motion.a)`
   display: inline-flex;
   align-items: center;
@@ -1307,12 +1314,33 @@ export const LightboxGithubBtn = styled(motion.a)`
   background: transparent;
   border: 1px solid rgba(0, 180, 200, 0.4);
   text-decoration: none;
-  margin-top: auto;
   transition: background 0.2s, border-color 0.2s;
 
   &:hover {
     background: rgba(0, 180, 200, 0.08);
     border-color: var(--accent);
+  }
+`
+
+export const LightboxDemoBtn = styled(motion.a)`
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 4px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #021a2b;
+  background: var(--accent);
+  border: none;
+  text-decoration: none;
+  transition: background 0.2s, opacity 0.2s;
+
+  &:hover {
+    background: #00cce0;
+    opacity: 0.95;
   }
 `
 

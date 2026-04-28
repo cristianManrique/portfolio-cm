@@ -1,24 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate }     from 'react-router-dom';
-import styled              from 'styled-components';
-import { motion }          from 'motion/react';
-
-// ─────────────────────────────────────────────────────────────────────────────
-// DEMO PLACEHOLDER
-// In production this dashboard:
-//   - Fetches projects from MongoDB via GET /.netlify/functions/projects-get
-//   - Supports full CRUD (POST / PATCH / DELETE) with JWT auth
-//   - Uploads images to Cloudinary via /.netlify/functions/upload-image
-//   - Drag-and-drop reordering saved via PATCH /.netlify/functions/projects-reorder
-// See: netlify/functions/ for all serverless handlers
-// ─────────────────────────────────────────────────────────────────────────────
-
-const MOCK_PROJECTS = [
-  { _id: '1', title: { en: 'Confidential Client — Automotive' }, tags: ['React', 'Redux', 'Design System'] },
-  { _id: '2', title: { en: 'AI Form Builder — Claude AI' },      tags: ['Claude AI', 'React', 'JSON Schema'] },
-  { _id: '3', title: { en: 'Portfolio Admin — CMS Dashboard' },  tags: ['React', 'MongoDB', 'Netlify', 'JWT'] },
-  { _id: '4', title: { en: 'AdWords Campaign — Charts' },        tags: ['React 18', 'Chart.js', 'ESLint'] },
-];
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { motion } from 'motion/react';
 
 // ── Styled ────────────────────────────────────────────────────────────────────
 const Page = styled.div`
@@ -65,15 +48,14 @@ const LogoutBtn = styled.button`
 const DemoBanner = styled.div`
   max-width: 1080px;
   margin: 0 auto 1.5rem;
-  padding: 0.7rem 1rem;
-  background: rgba(244,162,97,.08);
-  border: 1px solid rgba(244,162,97,.3);
+  padding: 0.85rem 1.2rem;
+  background: rgba(244, 162, 97, 0.1);
+  border: 1px solid rgba(244, 162, 97, 0.35);
   border-radius: 4px;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: #f4a261;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  line-height: 1.6;
+  code { font-size: 0.7rem; opacity: 0.8; }
 `;
 
 const Grid = styled.div`
@@ -142,6 +124,31 @@ const Textarea = styled.textarea`
   &:focus { border-color: var(--accent, #00b4c8); }
 `;
 
+const UploadZone = styled.label`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--border-dim, rgba(0,180,200,.25));
+  border-radius: 4px;
+  padding: 1.2rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  color: var(--text-muted, #a0c4d8);
+  font-size: 0.8rem;
+  text-align: center;
+  gap: 4px;
+  &:hover { border-color: var(--accent, #00b4c8); }
+`;
+
+const Preview = styled.img`
+  width: 100%;
+  max-height: 140px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+`;
+
 const SubmitBtn = styled(motion.button)`
   width: 100%;
   margin-top: 1.2rem;
@@ -156,37 +163,6 @@ const SubmitBtn = styled(motion.button)`
   letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
-`;
-
-const OrderToolbar = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 1rem;
-`;
-
-const OrderBtn = styled.button`
-  padding: 5px 14px;
-  border-radius: 4px;
-  font-family: var(--font-display);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  cursor: pointer;
-  opacity: 0.5;
-`;
-
-const SaveBtn = styled(OrderBtn)`
-  background: var(--accent, #00b4c8);
-  color: #021a2b;
-  border: none;
-`;
-
-const ResetBtn = styled(OrderBtn)`
-  background: none;
-  border: 1px solid rgba(0,180,200,.35);
-  color: var(--text-muted, #a0c4d8);
 `;
 
 const ProjectRow = styled.div`
@@ -205,7 +181,8 @@ const DragHandle = styled.div`
   padding: 4px 2px;
   cursor: grab;
   flex-shrink: 0;
-  opacity: 0.35;
+  opacity: 0.45;
+  &:hover { opacity: 1; }
   span {
     display: block;
     width: 16px;
@@ -215,12 +192,12 @@ const DragHandle = styled.div`
   }
 `;
 
-const Thumb = styled.div`
+const Thumb = styled.img`
   width: 52px;
   height: 40px;
+  object-fit: cover;
   border-radius: 3px;
-  background: rgba(0,180,200,.08);
-  border: 1px solid rgba(0,180,200,.15);
+  background: rgba(0,0,0,.3);
   flex-shrink: 0;
 `;
 
@@ -246,28 +223,104 @@ const ProjectTags = styled.div`
 
 const ActionBtn = styled.button`
   background: none;
-  border: 1px solid rgba(230,57,70,.4);
-  color: #e63946;
+  border: 1px solid rgba(0,180,200,.4);
+  color: var(--accent, #00b4c8);
   border-radius: 4px;
   padding: 4px 10px;
   font-size: 0.72rem;
   cursor: pointer;
   flex-shrink: 0;
   transition: background 0.2s;
+  &:hover { background: rgba(0,180,200,.08); }
+`;
+
+const DeleteBtn = styled(ActionBtn)`
+  border-color: rgba(230,57,70,.4);
+  color: #e63946;
   &:hover { background: rgba(230,57,70,.12); }
 `;
 
-// ── Component ─────────────────────────────────────────────────────────────────
+const OrderToolbar = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+`;
+
+const SaveBtn = styled.button`
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: not-allowed;
+  background: var(--accent, #00b4c8);
+  color: #021a2b;
+  border: none;
+  opacity: 0.45;
+`;
+
+const ResetBtn = styled.button`
+  padding: 5px 14px;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: not-allowed;
+  background: none;
+  border: 1px solid rgba(0,180,200,.35);
+  color: var(--text-muted, #a0c4d8);
+  opacity: 0.45;
+`;
+
+// ── Mock data (static — no real backend) ─────────────────────────────────────
+//
+//  In production, projects are loaded from MongoDB via:
+//    GET /.netlify/functions/projects-get
+//  and ordered by the `order` field (set by drag-and-drop via projects-reorder.js).
+//
+const MOCK_PROJECTS = [
+  {
+    id: '1',
+    title: '<- Cristian Manrique -> — Portfolio',
+    tags: 'React · MongoDB · Netlify Functions',
+    thumb: '/projects/project-placeholder.svg',
+  },
+  {
+    id: '2',
+    title: 'Notes Dashboard — Kanban Board',
+    tags: 'Next.js · TypeScript · Prisma',
+    thumb: '/projects/project-placeholder.svg',
+  },
+  {
+    id: '3',
+    title: 'AI Form Builder — Claude AI',
+    tags: 'React · Claude AI · Node.js',
+    thumb: '/projects/project-placeholder.svg',
+  },
+  {
+    id: '4',
+    title: 'Confidential Client — Automotive',
+    tags: 'React · Google Maps API',
+    thumb: '/projects/project-placeholder.svg',
+  },
+];
+
+// ── Component (PLACEHOLDER — no real CRUD) ────────────────────────────────────
 const AdminDashboard = () => {
   const navigate = useNavigate();
+
+  const showDemo = () =>
+    alert('Demo mode — configure your .env + Netlify Functions to activate CRUD operations.');
 
   const handleLogout = () => {
     sessionStorage.removeItem('admin_token');
     navigate('/admin/login');
   };
-
-  const showDemo = () =>
-    alert('Demo mode — connect your .env to enable live CRUD via the Netlify API.');
 
   return (
     <Page>
@@ -277,34 +330,47 @@ const AdminDashboard = () => {
       </Header>
 
       <DemoBanner>
-        ⚡ Demo placeholder — all actions are disabled. Clone the repo, configure{' '}
-        <code style={{ fontSize: '0.72rem' }}>.env</code>, and deploy to Netlify to activate the live CMS.
+        <strong>Alpha / Demo mode</strong> — all CRUD operations are disabled in this
+        public version. In production, this dashboard connects to{' '}
+        <code>netlify/functions/projects-*.js</code> via an Axios client with a JWT
+        interceptor (<code>src/utils/Api.js</code>). Drag-and-drop reordering persists
+        to MongoDB via <code>Project.bulkWrite()</code> in{' '}
+        <code>projects-reorder.js</code>.
       </DemoBanner>
 
       <Grid>
 
-        {/* ── ADD PROJECT FORM (UI demo) ── */}
+        {/* ── ADD / EDIT PROJECT FORM (UI only) ── */}
         <Card>
           <CardTitle>Ajouter un projet</CardTitle>
           <form onSubmit={e => { e.preventDefault(); showDemo(); }}>
 
             <Label>Titre (EN) *</Label>
-            <Input placeholder="My awesome project" readOnly onClick={showDemo} />
+            <Input placeholder="My Project" readOnly />
 
             <Label>Titre (FR) *</Label>
-            <Input placeholder="Mon super projet" readOnly onClick={showDemo} />
+            <Input placeholder="Mon projet" readOnly />
 
             <Label>Description (EN) *</Label>
-            <Textarea placeholder="Project description…" readOnly onClick={showDemo} />
+            <Textarea placeholder="Project description in English..." readOnly />
 
             <Label>Description (FR) *</Label>
-            <Textarea placeholder="Description du projet…" readOnly onClick={showDemo} />
+            <Textarea placeholder="Description du projet en français..." readOnly />
 
             <Label>Tags (séparés par virgule)</Label>
-            <Input placeholder="React, Figma, Tailwind" readOnly onClick={showDemo} />
+            <Input placeholder="React, Node.js, MongoDB" readOnly />
 
             <Label>GitHub URL</Label>
-            <Input placeholder="https://github.com/..." readOnly onClick={showDemo} />
+            <Input placeholder="https://github.com/..." readOnly />
+
+            <Label>Live Demo URL</Label>
+            <Input placeholder="https://..." readOnly />
+
+            <Label>Image du projet</Label>
+            <UploadZone>
+              <Preview src="/projects/project-placeholder.svg" alt="preview" />
+              <small style={{ marginTop: '0.4rem' }}>Cliquez pour ajouter une image</small>
+            </UploadZone>
 
             <SubmitBtn type="submit" whileTap={{ scale: 0.97 }}>
               Ajouter le projet
@@ -312,33 +378,28 @@ const AdminDashboard = () => {
           </form>
         </Card>
 
-        {/* ── PROJECT LIST (UI demo with drag handles) ── */}
+        {/* ── PROJECT LIST (static mock) ── */}
         <Card>
           <CardTitle>Projets actuels ({MOCK_PROJECTS.length})</CardTitle>
 
-          {/* Order toolbar */}
+          {/* Order toolbar — disabled in demo */}
           <OrderToolbar>
-            <SaveBtn disabled title="Demo mode">Sauvegarder</SaveBtn>
-            <ResetBtn disabled title="Demo mode">Reset</ResetBtn>
+            <SaveBtn disabled>Sauvegarder</SaveBtn>
+            <ResetBtn disabled>Reset</ResetBtn>
           </OrderToolbar>
 
           {MOCK_PROJECTS.map(p => (
-            <ProjectRow key={p._id}>
-              <DragHandle title="Drag to reorder (demo)">
+            <ProjectRow key={p.id}>
+              <DragHandle title="Drag to reorder">
                 <span /><span /><span />
               </DragHandle>
-              <Thumb />
+              <Thumb src={p.thumb} alt={p.title} />
               <ProjectInfo>
-                <ProjectTitle>{p.title.en}</ProjectTitle>
-                <ProjectTags>{p.tags.join(', ')}</ProjectTags>
+                <ProjectTitle>{p.title}</ProjectTitle>
+                <ProjectTags>{p.tags}</ProjectTags>
               </ProjectInfo>
-              <ActionBtn
-                onClick={showDemo}
-                style={{ borderColor: 'rgba(0,180,200,.4)', color: 'var(--accent, #00b4c8)', marginRight: '6px' }}
-              >
-                Modifier
-              </ActionBtn>
-              <ActionBtn onClick={showDemo}>Supprimer</ActionBtn>
+              <ActionBtn onClick={showDemo}>Modifier</ActionBtn>
+              <DeleteBtn onClick={showDemo}>Supprimer</DeleteBtn>
             </ProjectRow>
           ))}
         </Card>

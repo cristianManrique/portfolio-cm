@@ -13,6 +13,7 @@ const ProjectSchema = new mongoose.Schema({
   images:  { type: [String], default: [] },   // Cloudinary URLs
   tags:    { type: [String], default: [] },
   github:  { type: String,  default: null },
+  demo:    { type: String,  default: null },
   order:   { type: Number,  default: 0 },
 }, { timestamps: true });
 

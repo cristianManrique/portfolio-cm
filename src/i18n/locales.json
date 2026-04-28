@@ -4,13 +4,9 @@
       "About",
       "À propos"
     ],
-    "work": [
-      "Work",
-      "Travaux"
-    ],
-    "experience": [
-      "Experience",
-      "Expérience"
+    "experiences": [
+      "Experiences",
+      "Expériences"
     ],
     "projects": [
       "Projects",
@@ -25,7 +21,7 @@
       "Contact"
     ]
   },
-  "hero": {
+   "hero": {
     "line1_pre": [
       "The",
       "Le"
@@ -112,23 +108,23 @@
       "I'm the rare person who moves from visual concept to functional front-end code — bridging the gap myself between the UI, the API, and the database. I deliver both sides of the project, with no friction between design and code, no middleman between the vision and the final product.",
       "Je suis la personne rare qui passe d'un concept visuel à un code front-end fonctionnel — en assurant moi-même le pont avec les API et les bases de données. Je livre les deux bords du projet, sans friction entre design et code, sans intermédiaire entre la vision et le produit final."
     ],
-    "cv": [
-      "Curriculum Vitae",
-      "Curriculum Vitae"
-    ],
     "p3": [
       "12 years in art direction and graphic design. 7 years shipping React interfaces in production.",
       "12 ans en direction artistique et graphisme. 7 ans à implémenter des interfaces React en production."
+    ],
+    "cv": [
+      "Curriculum Vitae",
+      "Curriculum Vitae"
     ]
   },
   "experience": {
     "section_pre": [
       "Work",
-      "Expérience"
+      "Expériences"
     ],
     "section_bold": [
-      "EXPERIENCE",
-      "PROFESSIONNELLE"
+      "EXPERIENCES",
+      "PROFESSIONNELLES"
     ],
     "jobs": [
       {
@@ -228,124 +224,91 @@
         "category": [
           "Development",
           "Développement"
-        ],
-        "icon": "{ }",
-        "skills": [
-          {
-            "name": "JavaScript",
-            "level": 95
-          },
-          {
-            "name": "Typescript",
-            "level": 65
-          },
-          {
-            "name": "Node.js",
-            "level": 90
-          },
-          {
-            "name": "React",
-            "level": 95
-          },
-          {
-            "name": "Next",
-            "level": 40
-          },
-          {
-            "name": "Angular",
-            "level": 40
-          },
-          {
-            "name": "Redux & Redux Thunk",
-            "level": 85
-          },
-          {
-            "name": "CSS/SCSS/SASS/Styled",
-            "level": 98
-          }
         ]
       },
       {
         "category": [
           "Design & UX/UI",
           "Design & UX/UI"
-        ],
-        "icon": "✦",
-        "skills": [
-          {
-            "name": "Figma",
-            "level": 75
-          },
-          {
-            "name": "Adobe XD",
-            "level": 85
-          },
-          {
-            "name": "Affinity",
-            "level": 95
-          },
-          {
-            "name": "Adobe CC",
-            "level": 82
-          },
-          {
-            "name": [
-              "Branding",
-              "Image de marque"
-            ],
-            "level": 88
-          }
         ]
       },
       {
         "category": [
           "Tools & AI",
           "Outils & IA"
-        ],
-        "icon": "⚡",
-        "skills": [
-          {
-            "name": "GitHub + Copilot AI",
-            "level": 90
-          },
-          {
-            "name": "Claude AI",
-            "level": 92
-          },
-          {
-            "name": "Copilot AI",
-            "level": 88
-          },
-          {
-            "name": "Affinity AI",
-            "level": 85
-          },
-          {
-            "name": "Adobe AI",
-            "level": 90
-          }
         ]
       }
     ]
   },
   "contact": {
-    "section": ["CONTACT", "CONTACT"],
-    "subtitle": ["Let's work together", "Travaillons ensemble"],
-    "name_label": ["Name", "Nom"],
-    "name_placeholder": ["Your name", "Votre nom"],
-    "email_label": ["Email", "Courriel"],
-    "email_placeholder": ["your@email.com", "votre@email.com"],
-    "message_label": ["Message", "Message"],
-    "message_placeholder": ["Tell me about your project or idea...", "Parlez-moi de votre projet ou idée..."],
-    "send": ["Send message", "Envoyer"],
-    "sending": ["Sending...", "Envoi en cours..."],
-    "success": ["Message sent! I'll get back to you soon.", "Message envoyé ! Je vous répondrai sous peu."],
-    "error": ["Something went wrong. Please try again.", "Une erreur s'est produite. Veuillez réessayer."],
-    "cooldown": ["Please wait a moment before sending again.", "Veuillez patienter avant d'envoyer à nouveau."],
-    "err_name_required": ["Name is required.", "Le nom est requis."],
-    "err_email_required": ["Email is required.", "L'adresse courriel est requise."],
-    "err_email_invalid": ["Please enter a valid email address.", "Veuillez entrer une adresse courriel valide."],
-    "err_message_required": ["Message is required.", "Le message est requis."]
+    "section": [
+      "CONTACT",
+      "CONTACT"
+    ],
+    "subtitle": [
+      "Let's work together",
+      "Travaillons ensemble"
+    ],
+    "name_label": [
+      "Name",
+      "Nom"
+    ],
+    "name_placeholder": [
+      "Your name",
+      "Votre nom"
+    ],
+    "email_label": [
+      "Email",
+      "Courriel"
+    ],
+    "email_placeholder": [
+      "your@email.com",
+      "votre@email.com"
+    ],
+    "message_label": [
+      "Message",
+      "Message"
+    ],
+    "message_placeholder": [
+      "Tell me about your project or idea...",
+      "Parlez-moi de votre projet ou idée..."
+    ],
+    "send": [
+      "Send message",
+      "Envoyer"
+    ],
+    "sending": [
+      "Sending...",
+      "Envoi en cours..."
+    ],
+    "success": [
+      "Message sent! I'll get back to you soon.",
+      "Message envoyé ! Je vous répondrai sous peu."
+    ],
+    "error": [
+      "Something went wrong. Please try again.",
+      "Une erreur s'est produite. Veuillez réessayer."
+    ],
+    "cooldown": [
+      "Please wait a moment before sending again.",
+      "Veuillez patienter avant d'envoyer à nouveau."
+    ],
+    "err_name_required": [
+      "Name is required.",
+      "Le nom est requis."
+    ],
+    "err_email_required": [
+      "Email is required.",
+      "L'adresse courriel est requise."
+    ],
+    "err_email_invalid": [
+      "Please enter a valid email address.",
+      "Veuillez entrer une adresse courriel valide."
+    ],
+    "err_message_required": [
+      "Message is required.",
+      "Le message est requis."
+    ]
   },
   "footer": {
     "section": [
@@ -360,6 +323,9 @@
         "Courriel"
       ]
     },
-    "copyright": "©2026 Cristian Manrique"
+    "copyright": [
+      "All rights reserved",
+      "Tous droits réservés"
+    ]
   }
 }
