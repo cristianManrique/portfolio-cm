@@ -15,8 +15,9 @@
 | **Stack** | React 19 · Vite 7 · styled-components v6 · motion/react · Redux · i18next · Netlify Functions · MongoDB |
 | **Local Path (beta)** | `C:\Users\admin\Documents\www\portfolio_cm` |
 | **Local Path (alpha)** | `C:\Users\admin\Documents\www\portfolio_cm_alpha` |
-| **Dev Command** | `yarn dev` → `http://localhost:3000` |
-| **Build Command** | `yarn build` |
+| **Dev Command** | `yarn dev` → `http://localhost:3000` (Vite + i18n watcher via concurrently) |
+| **Build Command** | `yarn build` (prebuild runs `generate-locales.js` automatically) |
+| **i18n** | `yarn i18n` — regenerate EN/FR from `locales.json` |
 | **Deployed** | [crisman.dev](https://crisman.dev) (production, private) |
 
 ---
@@ -317,6 +318,16 @@ const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
 
 ## ⚙️ Tech Constraints
 
+### Vite config — key settings
+```js
+// vite.config.js
+react({ babel: { plugins: [["babel-plugin-react-compiler"]] } })
+// babel-plugin-react-compiler — React 19 compiler enabled
+// json: { stringify: true } — direct JSON imports
+// server: { port: 3000, open: true }
+// watch: includes src/i18n/locales/** for HMR
+```
+
 ### Motion — import from `motion/react`
 ```jsx
 import { motion, AnimatePresence } from 'motion/react'
@@ -356,7 +367,7 @@ en[] / fr[]  keys:
 | `vite` | ^7 | Build tool |
 | `styled-components` | ^6 | All styling |
 | `motion` | ^12 | Animations (`motion/react`) |
-| `react-router-dom` | ^7 | Routing |
+| `react-router-dom` | ^7.13.2 | Routing (v7 — Framework mode not used) |
 | `@reduxjs/toolkit` | ^2 | Redux store |
 | `react-redux` | ^9 | React bindings |
 | `i18next` | ^24 | i18n engine |
@@ -364,14 +375,19 @@ en[] / fr[]  keys:
 | `react-helmet-async` | latest | SEO meta tags |
 | `emailjs-com` | latest | Contact form |
 | `react-google-recaptcha` | latest | reCAPTCHA v2 |
-| `@dnd-kit/core` | latest | Drag-and-drop (admin) |
-| `@dnd-kit/sortable` | latest | Sortable list |
+| `@dnd-kit/core` | latest | Drag-and-drop (admin) — `yarn add @dnd-kit/core @dnd-kit/sortable` |
+| `@dnd-kit/sortable` | latest | Sortable list — see note above |
 | `axios` | latest | HTTP client |
 | `uuid` | latest | Project IDs (Constants.js) |
 | `mongoose` | latest | MongoDB ODM (functions) |
 | `jsonwebtoken` | latest | JWT (functions) |
 | `bcryptjs` | latest | Password hash (functions) |
 | `cloudinary` | latest | Image upload (functions) |
+
+> ⚠️ **`@dnd-kit/core` and `@dnd-kit/sortable` are NOT in `package.json`** — install manually before working on AdminDashboard:
+> ```bash
+> yarn add @dnd-kit/core @dnd-kit/sortable
+> ```
 
 ---
 
@@ -420,4 +436,10 @@ en[] / fr[]  keys:
 
 ---
 
-*Last updated: April 2026 · Portfolio CM · Alpha v2.0 · Phases 1 & 2 complete*
+11. **`@dnd-kit`** — not in package.json, must be installed separately before working on AdminDashboard
+12. **`react-router-dom` is v7** — do not use v6 patterns like `<Switch>`, use `<Routes>` only
+13. **Admin pages in this alpha are UI placeholders** — backend requires `.env` configuration
+
+---
+
+*Last updated: April 2026 · Portfolio CM · Alpha v2.0 · Phases 1 & 2 complete · Local: portfolio_cm_alpha*

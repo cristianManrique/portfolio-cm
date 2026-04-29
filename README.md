@@ -1,6 +1,6 @@
 # <- Cristian Manrique -> · Portfolio
 
-> **ALPHA VERSION** — This repository is a public showcase of the codebase architecture and front-end work.  
+> **ALPHA VERSION** — This repository is a public showcase of the codebase architecture and front-end work.
 > The full production version is live and private — source code not publicly available.
 
 ---
@@ -22,11 +22,15 @@ This alpha version demonstrates the architecture, component structure, and tooli
 | Vite 7 | Build tool & dev server |
 | Styled Components v6 | CSS-in-JS styling (130+ exported components) |
 | Framer Motion (motion/react) | Animations & transitions |
-| React Router v7 | Client-side routing |
+| React Router v7.13 | Client-side routing |
 | Redux Toolkit | Language state management |
 | i18next | EN / FR internationalization |
 | EmailJS | Contact form (no server needed) |
 | React Helmet Async | SEO meta tags |
+
+| @dnd-kit | Drag-and-drop project reordering (admin) |
+| axios | HTTP client with JWT interceptor |
+| uuid | Project IDs in Constants.js |
 
 ### Backend (Netlify Serverless Functions)
 | | |
@@ -202,20 +206,27 @@ cp .env.example .env
 # Fill in your own values — see .env.example for instructions
 ```
 
-### 3. Run locally
+### 3. Install optional dependencies
+
+```bash
+# Drag-and-drop (admin dashboard)
+yarn add @dnd-kit/core @dnd-kit/sortable
+```
+
+### 4. Run locally
 
 ```bash
 yarn dev
 ```
 
-> The admin panel at `/admin/dashboard` requires a live backend (MongoDB + Netlify Functions).  
+> The admin panel at `/admin/dashboard` requires a live backend (MongoDB + Netlify Functions).
 > In this alpha, all admin actions show a **demo mode** message.
 
 ---
 
 ## Environment Variables
 
-All required variables are documented in [`.env.example`](.env.example).  
+All required variables are documented in [`.env.example`](.env.example).
 **Never commit `.env`** — it is gitignored.
 
 | Variable | Purpose |
@@ -248,11 +259,13 @@ This is an **alpha / showcase version** of my portfolio.
 - The **production version** is live at **[crisman.dev](https://crisman.dev)** — not open source
 - Admin credentials and database access are not included
 - Project screenshots in `/public/projects/` are gitignored — add your own locally
+- `@dnd-kit` packages are not in `package.json` — install manually for admin DnD
+- Tested with Node.js 20+ and Vite 7
 
 ---
 
 ## Author
 
-**Cristian Manrique**  
-Front-End Developer & UI/UX Designer — Montréal  
+**Cristian Manrique**
+Front-End Developer & UI/UX Designer — Montréal
 [linkedin.com/in/cristian-manrique](https://linkedin.com/in/cristian-manrique) · [github.com/cristianManrique](https://github.com/cristianManrique)
