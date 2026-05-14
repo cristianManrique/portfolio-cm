@@ -11,22 +11,26 @@ import PlaceholderSVG from '../assets/PlaceholderSvg';
 import * as Styled from '../components/PortfolioStyled';
 
 const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
-  const [imgIndex, setImgIndex] = useState(0)
-  const images = project.images || []
-  const hasMultiple = images.length > 1
+  const [imgIndex, setImgIndex] = useState(0);
+  const images = project.images || [];
+  const hasMultiple = images.length > 1;
 
   // Close on Escape key
   useEffect(() => {
-    const onKey = e => { if (e.key === 'Escape') onClose() }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-  }, [onClose])
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
 
   // Prevent body scroll while open
   useEffect(() => {
-    document.body.style.overflow = 'hidden'
-    return () => { document.body.style.overflow = '' }
-  }, [])
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   return (
     <Styled.LightboxOverlay
@@ -41,29 +45,26 @@ const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.96, y: 20 }}
         transition={{ duration: 0.35, ease: EASE_OUT_EXPO }}
-        onClick={e => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()}
       >
-
         {/* ── Left — Image side ── */}
         <Styled.LightboxImageSide>
           <AnimatePresence mode="wait">
-            {images[imgIndex]
-              ? (
-                <Styled.LightboxImage
-                  key={imgIndex}
-                  src={images[imgIndex]}
-                  alt={`${project.title} — ${imgIndex + 1}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                />
-              ) : (
-                <Styled.LightboxPlaceholder>
-                  <PlaceholderSVG />
-                </Styled.LightboxPlaceholder>
-              )
-            }
+            {images[imgIndex] ? (
+              <Styled.LightboxImage
+                key={imgIndex}
+                src={images[imgIndex]}
+                alt={`${project.title} — ${imgIndex + 1}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            ) : (
+              <Styled.LightboxPlaceholder>
+                <PlaceholderSVG />
+              </Styled.LightboxPlaceholder>
+            )}
           </AnimatePresence>
 
           {/* Image dots — only if multiple images */}
@@ -83,7 +84,6 @@ const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
 
         {/* ── Right — Info panel ── */}
         <Styled.LightboxPanel>
-
           {/* Close button — top right of panel */}
           <Styled.LightboxWrapperDiv>
             <Styled.LightboxCloseBtn
@@ -102,14 +102,18 @@ const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
           </div>
 
           {project.description && (
-            <Styled.LightboxDesc>{project.description[lang]}</Styled.LightboxDesc>
+            <Styled.LightboxDesc>
+              {project.description[lang]}
+            </Styled.LightboxDesc>
           )}
 
           {project.tags?.length > 0 && (
             <div>
-              <Styled.LightboxTagsLabel>Stack &amp; Tools</Styled.LightboxTagsLabel>
+              <Styled.LightboxTagsLabel>
+                Stack &amp; Tools
+              </Styled.LightboxTagsLabel>
               <Styled.LightboxTagsRow>
-                {project.tags.map(tag => (
+                {project.tags.map((tag) => (
                   <Styled.LightboxTag key={tag}>{tag}</Styled.LightboxTag>
                 ))}
               </Styled.LightboxTagsRow>
@@ -145,22 +149,21 @@ const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
             </Styled.LightboxBtnRow>
           )}
         </Styled.LightboxPanel>
-
       </Styled.LightboxModal>
     </Styled.LightboxOverlay>
-  )
-}
+  );
+};
 
 ProjectLightbox.propTypes = {
   project: PropTypes.shape({
-    title:       PropTypes.string.isRequired,
-    images:      PropTypes.arrayOf(PropTypes.string),
+    title: PropTypes.string.isRequired,
+    images: PropTypes.arrayOf(PropTypes.string),
     description: PropTypes.string,
-    tags:        PropTypes.arrayOf(PropTypes.string),
-    github:      PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+    github: PropTypes.string,
   }).isRequired,
   lang: PropTypes.oneOf(['en', 'fr']),
   onClose: PropTypes.func.isRequired,
-}
+};
 
 export default ProjectLightbox;

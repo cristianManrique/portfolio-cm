@@ -20,10 +20,12 @@ const Hero = () => {
 
       <Styled.HeroContent>
         <Styled.HeroHeadlineWrapper>
-
           {/* ── Line 1 : "The FUTURE of" ── thin, small */}
           <Styled.HeroLineThin
-            custom={0} variants={lineVariants} initial="hidden" animate="visible"
+            custom={0}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
           >
             {t('hero.line1_pre')}{' '}
             <Styled.HeroBold>{t('hero.line1_bold')}</Styled.HeroBold>{' '}
@@ -32,28 +34,35 @@ const Hero = () => {
 
           {/* ── Line 2 : "DESIGN" ── bold, massive */}
           <Styled.HeroLineBold
-            custom={1} variants={lineVariants} initial="hidden" animate="visible"
+            custom={1}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
           >
             {t('hero.line2')}
           </Styled.HeroLineBold>
 
           {/* ── Line 3 : "& DEVELOPMENT" ── bold, & in teal */}
           <Styled.HeroLineBold
-            custom={2} variants={lineVariants} initial="hidden" animate="visible"
+            custom={2}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <Styled.HeroThin>&</Styled.HeroThin>{' '}{t('hero.line3')}
+            <Styled.HeroThin>&</Styled.HeroThin> {t('hero.line3')}
           </Styled.HeroLineBold>
 
           {/* ── Line 4 : "is HUMAN + AI" ── thin, small */}
           <Styled.HeroLineThin
-            custom={3} variants={lineVariants} initial="hidden" animate="visible"
+            custom={3}
+            variants={lineVariants}
+            initial="hidden"
+            animate="visible"
           >
             {t('hero.line4_pre')}{' '}
-            <Styled.AiBold>{t('hero.line4_human')}</Styled.AiBold>
-            {' '}+{' '}
+            <Styled.AiBold>{t('hero.line4_human')}</Styled.AiBold> +{' '}
             <Styled.AiBold>{t('hero.line4_ai')}</Styled.AiBold>
           </Styled.HeroLineThin>
-
         </Styled.HeroHeadlineWrapper>
 
         <Styled.HeroTealDivider
@@ -76,15 +85,15 @@ const Hero = () => {
       <Styled.FutureTitle
         animate={{
           opacity: [0, 0, 1, 1, 0],
-          x:       [60, 60, 0, 0, -20],
+          x: [60, 60, 0, 0, -20],
         }}
         transition={{
-          duration:    6,
-          times:       [0, 0.1, 0.25, 0.75, 1],
-          ease:        EASE_OUT_EXPO,
-          repeat:      Infinity,
+          duration: 6,
+          times: [0, 0.1, 0.25, 0.75, 1],
+          ease: EASE_OUT_EXPO,
+          repeat: Infinity,
           repeatDelay: 4,
-          delay:       2,
+          delay: 2,
         }}
       >
         {t('hero.subtitle_pre')}
@@ -93,7 +102,11 @@ const Hero = () => {
         <span>{t('hero.subtitle_bold2')}</span>
       </Styled.FutureTitle>
 
-      <Styled.HeroScrollIndicator variants={scrollVariants} initial="hidden" animate="visible">
+      <Styled.HeroScrollIndicator
+        variants={scrollVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <Styled.HeroScrollLabel>{t('hero.scroll')}</Styled.HeroScrollLabel>
         <Styled.HeroScrollLine
           animate={{ y: [0, 8, 0] }}

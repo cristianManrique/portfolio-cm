@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
-  EASE_OUT_EXPO, NAV_LINKS,
+  EASE_OUT_EXPO,
+  NAV_LINKS,
   BRAND_NAME,
   BRAND_PREFIX,
   BRAND_SUFFIX,
- } from '../components/Constants';
+} from '../components/Constants';
 
 import useTranslate from '../hooks/useTranslate';
 import Portfolio from '../assets/Portfolio';
@@ -13,8 +14,8 @@ import * as Styled from '../components/PortfolioStyled';
 
 const Navbar = () => {
   const { t, switchLang, langLabel, isEN } = useTranslate();
-  const [scrolled, setScrolled]     = useState(false);
-  const [menuOpen, setMenuOpen]     = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const pdfLink = isEN
     ? '/cristian_manrique_cv_en.pdf'
@@ -33,41 +34,48 @@ const Navbar = () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-  }, [])
+  }, []);
 
-  const handleNav = useCallback((e, href) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
-  },[setMenuOpen]);
+  const handleNav = useCallback(
+    (e, href) => {
+      e.preventDefault();
+      setMenuOpen(false);
+      const el = document.querySelector(href);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    },
+    [setMenuOpen]
+  );
 
-  const handleLogoClick = useCallback((e) => {
-    e.preventDefault();
-    setMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  },[setMenuOpen]);
+  const handleLogoClick = useCallback(
+    (e) => {
+      e.preventDefault();
+      setMenuOpen(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    [setMenuOpen]
+  );
 
   return (
     <Styled.NavbarNav
-     // Apply C scrolled or menu is open (to keep navbar visible when menu is open)
+      // Apply C scrolled or menu is open (to keep navbar visible when menu is open)
       $scrolled={scrolled || menuOpen}
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: EASE_OUT_EXPO }}
     >
-      <Styled.NavbarLogo
-        href="#"
-        onClick={handleLogoClick}
-      >
+      <Styled.NavbarLogo href="#" onClick={handleLogoClick}>
         <Styled.NavbarBracket>{BRAND_PREFIX}</Styled.NavbarBracket>
-          {BRAND_NAME}
+        {BRAND_NAME}
         <Styled.NavbarBracket>{BRAND_SUFFIX}</Styled.NavbarBracket>
       </Styled.NavbarLogo>
 
       <Styled.NavbarLinks>
-        {NAV_LINKS.map(link => (
-          <Styled.NavbarLink key={link.key} href={link.href} onClick={e => handleNav(e, link.href)}>
+        {NAV_LINKS.map((link) => (
+          <Styled.NavbarLink
+            key={link.key}
+            href={link.href}
+            onClick={(e) => handleNav(e, link.href)}
+          >
             {t(link.key)}
           </Styled.NavbarLink>
         ))}
@@ -79,9 +87,12 @@ const Navbar = () => {
           >
             CV
           </Styled.NavbarCVLink>
-        <Styled.NavbarLangButton onClick={switchLang} aria-label="Toggle language">
-          {langLabel}
-        </Styled.NavbarLangButton>
+          <Styled.NavbarLangButton
+            onClick={switchLang}
+            aria-label="Toggle language"
+          >
+            {langLabel}
+          </Styled.NavbarLangButton>
         </div>
         <Styled.NavbarPortfolioLink
           href="/portfolio_cm.pdf"
@@ -92,8 +103,13 @@ const Navbar = () => {
         </Styled.NavbarPortfolioLink>
       </Styled.NavbarLinks>
 
-      <Styled.NavbarHamburger onClick={() => setMenuOpen(o => !o)} aria-label="Toggle menu">
-        {[0, 1, 2].map(i => <Styled.NavbarHamBar key={i} $open={menuOpen} />)}
+      <Styled.NavbarHamburger
+        onClick={() => setMenuOpen((o) => !o)}
+        aria-label="Toggle menu"
+      >
+        {[0, 1, 2].map((i) => (
+          <Styled.NavbarHamBar key={i} $open={menuOpen} />
+        ))}
       </Styled.NavbarHamburger>
 
       {menuOpen && (
@@ -102,11 +118,11 @@ const Navbar = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
         >
-          {NAV_LINKS.map(link => (
+          {NAV_LINKS.map((link) => (
             <Styled.NavbarLink
               key={link.key}
               href={link.href}
-              onClick={e => handleNav(e, link.href)}
+              onClick={(e) => handleNav(e, link.href)}
             >
               {t(link.key)}
             </Styled.NavbarLink>
@@ -131,7 +147,7 @@ const Navbar = () => {
         </Styled.NavbarMobileMenu>
       )}
     </Styled.NavbarNav>
-  )
-}
+  );
+};
 
 export default Navbar;

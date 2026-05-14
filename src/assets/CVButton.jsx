@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'motion/react';
 import useTranslate from '../hooks/useTranslate';
@@ -20,8 +20,11 @@ export const CvDownloadButton = styled(motion.a)`
   color: var(--text-muted);
   text-decoration: none;
   letter-spacing: 0.06em;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
-  box-shadow: 0 0 32px rgba(0,180,200,0.25);
+  transition:
+    border-color 0.2s,
+    color 0.2s,
+    background 0.2s;
+  box-shadow: 0 0 32px rgba(0, 180, 200, 0.25);
   width: fit-content;
 
   &:hover {
@@ -49,9 +52,10 @@ const CvButton = () => {
       href={pdfLink}
       target="_blank"
       rel="noopener noreferrer"
-       initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{
-        opacity: 1, y: 0,
+        opacity: 1,
+        y: 0,
         boxShadow: [
           '0 0 6px rgba(0,180,200,0.15)',
           '0 0 32px rgba(0,180,200,0.55)',
@@ -68,7 +72,7 @@ const CvButton = () => {
       <DownloadIconImg src={downloadIcon} alt="Download CV" />
       {t('about.cv')}
     </CvDownloadButton>
-  )
-}
+  );
+};
 
 export default CvButton;

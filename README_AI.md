@@ -7,18 +7,18 @@
 
 ## 📌 Project Identity
 
-| Field | Value |
-|---|---|
-| **Project Name** | `portfolio-cm` |
-| **Owner** | Cristian Manrique |
-| **Type** | Personal Portfolio — Front-End Developer & Web Designer UI/UX |
-| **Stack** | React 19 · Vite 7 · styled-components v6 · motion/react · Redux · i18next · Netlify Functions · MongoDB |
-| **Local Path (beta)** | `C:\Users\admin\Documents\www\portfolio_cm` |
-| **Local Path (alpha)** | `C:\Users\admin\Documents\www\portfolio_cm_alpha` |
-| **Dev Command** | `yarn dev` → `http://localhost:3000` (Vite + i18n watcher via concurrently) |
-| **Build Command** | `yarn build` (prebuild runs `generate-locales.js` automatically) |
-| **i18n** | `yarn i18n` — regenerate EN/FR from `locales.json` |
-| **Deployed** | [crisman.dev](https://crisman.dev) (production, private) |
+| Field                  | Value                                                                                                   |
+| ---------------------- | ------------------------------------------------------------------------------------------------------- |
+| **Project Name**       | `portfolio-cm`                                                                                          |
+| **Owner**              | Cristian Manrique                                                                                       |
+| **Type**               | Personal Portfolio — Front-End Developer & Web Designer UI/UX                                           |
+| **Stack**              | React 19 · Vite 7 · styled-components v6 · motion/react · Redux · i18next · Netlify Functions · MongoDB |
+| **Local Path (beta)**  | `C:\Users\admin\Documents\www\portfolio_cm`                                                             |
+| **Local Path (alpha)** | `C:\Users\admin\Documents\www\portfolio_cm_alpha`                                                       |
+| **Dev Command**        | `yarn dev` → `http://localhost:3000` (Vite + i18n watcher via concurrently)                             |
+| **Build Command**      | `yarn build` (prebuild runs `generate-locales.js` automatically)                                        |
+| **i18n**               | `yarn i18n` — regenerate EN/FR from `locales.json`                                                      |
+| **Deployed**           | [crisman.dev](https://crisman.dev) (production, private)                                                |
 
 ---
 
@@ -26,26 +26,26 @@
 
 ### Color Palette
 
-| Role | Color |
-|---|---|
+| Role            | Color                 |
+| --------------- | --------------------- |
 | Background dark | `#021a2b` (deep navy) |
-| Background mid | `#032d45` (teal-navy) |
-| Background card | `#0a3a52` |
-| Accent teal | `#00b4c8` |
-| Accent red | `#e63946` |
-| Text primary | `#ffffff` |
-| Text muted | `#a0c4d8` |
-| Border/line | `rgba(0,180,200,0.2)` |
+| Background mid  | `#032d45` (teal-navy) |
+| Background card | `#0a3a52`             |
+| Accent teal     | `#00b4c8`             |
+| Accent red      | `#e63946`             |
+| Text primary    | `#ffffff`             |
+| Text muted      | `#a0c4d8`             |
+| Border/line     | `rgba(0,180,200,0.2)` |
 
 ### Typography
 
-| Role | Style |
-|---|---|
-| Logo / Brand | `<- Cristian Manrique ->` — brackets in teal accent |
-| Section titles | Bold uppercase, large |
-| Body text | Regular weight, muted color |
-| Tags / Pills | Small, rounded border, `#00b4c8` outline |
-| Font family | Dosis (Google Fonts) — `--font-display`, `--font-body`, `--font-mono` |
+| Role           | Style                                                                 |
+| -------------- | --------------------------------------------------------------------- |
+| Logo / Brand   | `<- Cristian Manrique ->` — brackets in teal accent                   |
+| Section titles | Bold uppercase, large                                                 |
+| Body text      | Regular weight, muted color                                           |
+| Tags / Pills   | Small, rounded border, `#00b4c8` outline                              |
+| Font family    | Dosis (Google Fonts) — `--font-display`, `--font-body`, `--font-mono` |
 
 ---
 
@@ -114,92 +114,107 @@ portfolio_cm/
 ## 🔑 Key Code Patterns
 
 ### 1. Component signature — always arrow function + default export
+
 ```jsx
 const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
-  const [imgIndex, setImgIndex] = useState(0)
+  const [imgIndex, setImgIndex] = useState(0);
   // ...
-}
-export default ProjectLightbox
+};
+export default ProjectLightbox;
 ```
 
 ### 2. Styled components — template literals + transient props
+
 ```jsx
-import styled from 'styled-components'
-import { motion } from 'motion/react'
+import styled from 'styled-components';
+import { motion } from 'motion/react';
 
 // Extend motion element
 const Card = styled(motion.div)`
   background: var(--bg-card);
   border-top: 3px solid var(--accent);
-  opacity: ${({ $isDragging }) => $isDragging ? 0.8 : 1};
-`
+  opacity: ${({ $isDragging }) => ($isDragging ? 0.8 : 1)};
+`;
 // ❌ NEVER object syntax: styled.div({}) or styled(x)(({}) => ({}))
 // ❌ NEVER inline style={{}} — everything is a named styled component
 // ✅ Transient props ($propName) prevent DOM attribute warnings
 ```
 
 ### 3. PortfolioStyled.js — import pattern
+
 ```jsx
 // Import all styled exports as a namespace
-import * as Styled from '../components/PortfolioStyled'
+import * as Styled from '../components/PortfolioStyled';
 
 // Use in JSX
 <Styled.LightboxModal>
   <Styled.LightboxTitle>{project.title[lang]}</Styled.LightboxTitle>
   <Styled.LightboxBtnRow>
-    {project.github && <Styled.LightboxGithubBtn href={project.github}>GitHub</Styled.LightboxGithubBtn>}
-    {project.demo   && <Styled.LightboxDemoBtn   href={project.demo}>Live Demo ↗</Styled.LightboxDemoBtn>}
+    {project.github && (
+      <Styled.LightboxGithubBtn href={project.github}>
+        GitHub
+      </Styled.LightboxGithubBtn>
+    )}
+    {project.demo && (
+      <Styled.LightboxDemoBtn href={project.demo}>
+        Live Demo ↗
+      </Styled.LightboxDemoBtn>
+    )}
   </Styled.LightboxBtnRow>
-</Styled.LightboxModal>
+</Styled.LightboxModal>;
 ```
 
 ### 4. i18n — always via useTranslate hook
+
 ```jsx
-import useTranslate from '../hooks/useTranslate'
+import useTranslate from '../hooks/useTranslate';
 
 const MyComponent = () => {
-  const { t, lang, isEN, isFR, switchLang, langLabel } = useTranslate()
-  return <h1>{t('hero.line1_pre')}</h1>
-}
+  const { t, lang, isEN, isFR, switchLang, langLabel } = useTranslate();
+  return <h1>{t('hero.line1_pre')}</h1>;
+};
 // NEVER: import { useTranslation } from 'react-i18next'
 ```
 
 ### 5. PROJECTS constant — structure with demo field
+
 ```js
 // src/components/Constants.js
 export const PROJECTS = [
   {
     id: uuidv4(),
-    title:       { en: 'My Project', fr: 'Mon Projet' },
-    images:      ['/projects/screenshot.png'],
+    title: { en: 'My Project', fr: 'Mon Projet' },
+    images: ['/projects/screenshot.png'],
     description: { en: 'English description', fr: 'Description française' },
-    tags:        ['React', 'MongoDB', 'Node.js'],
-    github:      'https://github.com/...',   // null → GitHub button hidden
-    demo:        'https://...',              // null → Demo button hidden
+    tags: ['React', 'MongoDB', 'Node.js'],
+    github: 'https://github.com/...', // null → GitHub button hidden
+    demo: 'https://...', // null → Demo button hidden
   },
-]
+];
 ```
 
 ### 6. Axios client — JWT auto-attached via interceptor
+
 ```js
 // src/utils/Api.js
-import axios from 'axios'
+import axios from 'axios';
 
-const client = axios.create()
+const client = axios.create();
 
-client.interceptors.request.use(config => {
-  const token = sessionStorage.getItem('admin_token')
-  if (token) config.headers.Authorization = `Bearer ${token}`
-  return config
-})
+client.interceptors.request.use((config) => {
+  const token = sessionStorage.getItem('admin_token');
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
 
-export const apiGet    = (url)         => client.get(url)
-export const apiPost   = (url, data)   => client.post(url, data)
-export const apiPatch  = (url, data)   => client.patch(url, data)
-export const apiDelete = (url)         => client.delete(url)
+export const apiGet = (url) => client.get(url);
+export const apiPost = (url, data) => client.post(url, data);
+export const apiPatch = (url, data) => client.patch(url, data);
+export const apiDelete = (url) => client.delete(url);
 ```
 
 ### 7. Drag-and-drop — @dnd-kit/sortable pattern
+
 ```jsx
 // Admin dashboard SortableRow sub-component
 const SortableRow = ({ project, onEdit, onDelete }) => {
@@ -236,38 +251,56 @@ const SortableRow = ({ project, onEdit, onDelete }) => {
 ```
 
 ### 8. Netlify Function — auth + response helpers
+
 ```js
 // netlify/functions/lib/auth.js pattern
 export const verifyToken = (event) => {
-  const auth = event.headers.authorization || ''
-  const token = auth.replace('Bearer ', '')
-  try { jwt.verify(token, process.env.ADMIN_JWT_SECRET); return true }
-  catch { return false }
-}
-export const ok  = (data, status = 200) => ({ statusCode: status, body: JSON.stringify(data) })
-export const err = (msg,  status = 500) => ({ statusCode: status, body: JSON.stringify({ error: msg }) })
+  const auth = event.headers.authorization || '';
+  const token = auth.replace('Bearer ', '');
+  try {
+    jwt.verify(token, process.env.ADMIN_JWT_SECRET);
+    return true;
+  } catch {
+    return false;
+  }
+};
+export const ok = (data, status = 200) => ({
+  statusCode: status,
+  body: JSON.stringify(data),
+});
+export const err = (msg, status = 500) => ({
+  statusCode: status,
+  body: JSON.stringify({ error: msg }),
+});
 ```
 
 ### 9. Netlify Function — bulk order update (MongoDB bulkWrite)
+
 ```js
 // netlify/functions/projects-reorder.js
 await Project.bulkWrite(
   items.map(({ id, order }) => ({
-    updateOne: { filter: { _id: id }, update: { $set: { order } } }
+    updateOne: { filter: { _id: id }, update: { $set: { order } } },
   }))
-)
+);
 ```
 
 ### 10. ContactForm — reCAPTCHA optional
+
 ```jsx
 // reCAPTCHA is bypassed if VITE_RECAPTCHA_SITE_KEY is not set
-const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || null
-const [captchaDone, setCaptchaDone] = useState(!RECAPTCHA_SITE_KEY)
+const RECAPTCHA_SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY || null;
+const [captchaDone, setCaptchaDone] = useState(!RECAPTCHA_SITE_KEY);
 
 // Render only when key exists
-{RECAPTCHA_SITE_KEY && (
-  <ReCAPTCHA sitekey={RECAPTCHA_SITE_KEY} onChange={() => setCaptchaDone(true)} />
-)}
+{
+  RECAPTCHA_SITE_KEY && (
+    <ReCAPTCHA
+      sitekey={RECAPTCHA_SITE_KEY}
+      onChange={() => setCaptchaDone(true)}
+    />
+  );
+}
 ```
 
 ---
@@ -275,6 +308,7 @@ const [captchaDone, setCaptchaDone] = useState(!RECAPTCHA_SITE_KEY)
 ## 📐 Section-by-Section Spec
 
 ### `<App />` — Router
+
 ```
 /                  → <Portfolio /> (all sections)
 /admin/login       → <AdminLogin />
@@ -282,33 +316,38 @@ const [captchaDone, setCaptchaDone] = useState(!RECAPTCHA_SITE_KEY)
 ```
 
 ### `<Navbar />` — Fixed Top
+
 - Logo: `<- Cristian Manrique ->` (brackets in accent teal)
 - Nav links: About · Experience · Projects · Skills · Contacts
 - Far right: FR/EN toggle via `switchLang()` from `useTranslate`
 - Scroll effect: transparent → `rgba(2,26,43,0.92)` blur background
 
 ### `<Hero />` — Full Screen
+
 - Video background: `<video autoPlay muted loop playsInline src="/hero-bg.mp4">`
 - Headline: staggered `motion` reveal — "The FUTURE of DESIGN & DEVELOPMENT is HUMAN + AI"
 - `<StarTrail>` wraps entire app — canvas `z-index: -1`
 
 ### `<ProjectLightbox />` — Modal
+
 ```jsx
 const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
   // Left panel: image carousel with dots
   // Right panel: title, description, tags
   // CTA row: LightboxGithubBtn (outline) + LightboxDemoBtn (filled teal)
   //   — both hidden if their respective url is null
-}
+};
 ```
 
 ### `<ContactForm />` — EmailJS
-- Fields: name, email, message, _trap (honeypot hidden field)
+
+- Fields: name, email, message, \_trap (honeypot hidden field)
 - reCAPTCHA v2 — optional (bypassed if no VITE_RECAPTCHA_SITE_KEY)
 - Sends via EmailJS: contact template + auto-reply template
 - 60s cooldown after successful submission
 
 ### `<AdminDashboard />` — Full CRUD + DnD
+
 - Left card: Add/Edit project form (title EN/FR, desc EN/FR, tags, github, demo URL, image upload)
 - Right card: Project list with drag-and-drop (dnd-kit), SAVE/RESET order toolbar
 - Save order → `PATCH /.netlify/functions/projects-reorder` → MongoDB `bulkWrite`
@@ -319,9 +358,10 @@ const ProjectLightbox = ({ project, onClose, lang = 'en' }) => {
 ## ⚙️ Tech Constraints
 
 ### Vite config — key settings
+
 ```js
 // vite.config.js
-react({ babel: { plugins: [["babel-plugin-react-compiler"]] } })
+react({ babel: { plugins: [['babel-plugin-react-compiler']] } });
 // babel-plugin-react-compiler — React 19 compiler enabled
 // json: { stringify: true } — direct JSON imports
 // server: { port: 3000, open: true }
@@ -329,29 +369,36 @@ react({ babel: { plugins: [["babel-plugin-react-compiler"]] } })
 ```
 
 ### Motion — import from `motion/react`
+
 ```jsx
-import { motion, AnimatePresence } from 'motion/react'
+import { motion, AnimatePresence } from 'motion/react';
 // NOT: from 'framer-motion'
 ```
 
 ### styled-components v6 — template literals only
+
 ```jsx
 // ✅ Correct
-const Btn = styled(motion.button)`color: var(--accent);`
+const Btn = styled(motion.button)`
+  color: var(--accent);
+`;
 
 // ❌ Wrong — never object syntax
-const Btn = styled(motion.button)(({ theme }) => ({ color: theme.accent }))
+const Btn = styled(motion.button)(({ theme }) => ({ color: theme.accent }));
 ```
 
 ### i18n structure — `src/i18n/locales.json`
+
 ```
 en[] / fr[]  keys:
   nav · hero · about · experience · projects · skills · contact · footer
 ```
+
 - EXPERIENCE and SKILLS data → `Constants.js` only, never in locales
 - Use `isEN ? data.en : data.fr` for bilingual constants, never `t()` for them
 
 ### Redux — language only
+
 ```js
 // store shape: { language: { current: 'en' } }
 // Only use via useTranslate hook — never direct useDispatch in components
@@ -361,30 +408,31 @@ en[] / fr[]  keys:
 
 ## 📦 Key Dependencies
 
-| Package | Version | Purpose |
-|---|---|---|
-| `react` | ^19 | UI framework |
-| `vite` | ^7 | Build tool |
-| `styled-components` | ^6 | All styling |
-| `motion` | ^12 | Animations (`motion/react`) |
-| `react-router-dom` | ^7.13.2 | Routing (v7 — Framework mode not used) |
-| `@reduxjs/toolkit` | ^2 | Redux store |
-| `react-redux` | ^9 | React bindings |
-| `i18next` | ^24 | i18n engine |
-| `react-i18next` | ^15 | React bindings |
-| `react-helmet-async` | latest | SEO meta tags |
-| `emailjs-com` | latest | Contact form |
-| `react-google-recaptcha` | latest | reCAPTCHA v2 |
-| `@dnd-kit/core` | latest | Drag-and-drop (admin) — `yarn add @dnd-kit/core @dnd-kit/sortable` |
-| `@dnd-kit/sortable` | latest | Sortable list — see note above |
-| `axios` | latest | HTTP client |
-| `uuid` | latest | Project IDs (Constants.js) |
-| `mongoose` | latest | MongoDB ODM (functions) |
-| `jsonwebtoken` | latest | JWT (functions) |
-| `bcryptjs` | latest | Password hash (functions) |
-| `cloudinary` | latest | Image upload (functions) |
+| Package                  | Version | Purpose                                                            |
+| ------------------------ | ------- | ------------------------------------------------------------------ |
+| `react`                  | ^19     | UI framework                                                       |
+| `vite`                   | ^7      | Build tool                                                         |
+| `styled-components`      | ^6      | All styling                                                        |
+| `motion`                 | ^12     | Animations (`motion/react`)                                        |
+| `react-router-dom`       | ^7.13.2 | Routing (v7 — Framework mode not used)                             |
+| `@reduxjs/toolkit`       | ^2      | Redux store                                                        |
+| `react-redux`            | ^9      | React bindings                                                     |
+| `i18next`                | ^24     | i18n engine                                                        |
+| `react-i18next`          | ^15     | React bindings                                                     |
+| `react-helmet-async`     | latest  | SEO meta tags                                                      |
+| `emailjs-com`            | latest  | Contact form                                                       |
+| `react-google-recaptcha` | latest  | reCAPTCHA v2                                                       |
+| `@dnd-kit/core`          | latest  | Drag-and-drop (admin) — `yarn add @dnd-kit/core @dnd-kit/sortable` |
+| `@dnd-kit/sortable`      | latest  | Sortable list — see note above                                     |
+| `axios`                  | latest  | HTTP client                                                        |
+| `uuid`                   | latest  | Project IDs (Constants.js)                                         |
+| `mongoose`               | latest  | MongoDB ODM (functions)                                            |
+| `jsonwebtoken`           | latest  | JWT (functions)                                                    |
+| `bcryptjs`               | latest  | Password hash (functions)                                          |
+| `cloudinary`             | latest  | Image upload (functions)                                           |
 
 > ⚠️ **`@dnd-kit/core` and `@dnd-kit/sortable` are NOT in `package.json`** — install manually before working on AdminDashboard:
+>
 > ```bash
 > yarn add @dnd-kit/core @dnd-kit/sortable
 > ```
@@ -394,6 +442,7 @@ en[] / fr[]  keys:
 ## 🚀 Development Phases
 
 ### ✅ Phase 1 — Pixel-Perfect UI (COMPLETE)
+
 - All sections: Navbar, Hero, About, Experience, Projects, Skills, Contact, Footer ✅
 - Motion animations throughout ✅
 - EN/FR bilingual (i18next + Redux) ✅
@@ -404,6 +453,7 @@ en[] / fr[]  keys:
 - SEO (react-helmet-async, Open Graph, JSON-LD) ✅
 
 ### ✅ Phase 2 — Serverless CMS Backend (COMPLETE)
+
 - 8 Netlify Functions: auth, projects CRUD+reorder, experience, image upload ✅
 - MongoDB Atlas + Mongoose (Project + Experience schemas with `demo` field) ✅
 - JWT authentication + bcrypt password verify ✅
@@ -414,6 +464,7 @@ en[] / fr[]  keys:
 - ProtectedRoute: JWT sessionStorage guard ✅
 
 ### 📋 Phase 3 — Content & Polish (In Progress)
+
 - Real project screenshots (WebP, Cloudinary-optimized)
 - Live Demo URLs for all public projects
 - Additional projects when available
@@ -442,4 +493,4 @@ en[] / fr[]  keys:
 
 ---
 
-*Last updated: April 2026 · Portfolio CM · Alpha v2.0 · Phases 1 & 2 complete · Local: portfolio_cm_alpha*
+_Last updated: April 2026 · Portfolio CM · Alpha v2.0 · Phases 1 & 2 complete · Local: portfolio_cm_alpha_

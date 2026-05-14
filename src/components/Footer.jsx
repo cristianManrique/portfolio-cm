@@ -13,13 +13,12 @@ import EmailIcon from '../assets/EmailIcon';
 import GitHubIcon from '../assets/GitHubIcon';
 import LinkedInIcon from '../assets/LinkedInIcon';
 
-
 import * as Styled from '../components/PortfolioStyled';
 
 export const ICON_MAP = {
   'footer.links.linkedin': LinkedInIcon,
-  'footer.links.github':   GitHubIcon,
-  'footer.links.email':    EmailIcon,
+  'footer.links.github': GitHubIcon,
+  'footer.links.email': EmailIcon,
 };
 
 const Footer = () => {
@@ -29,16 +28,16 @@ const Footer = () => {
     e.preventDefault();
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  },[]);
+  }, []);
 
   return (
     <Styled.FooterEl id="contacts">
       <Styled.FooterContainer>
         <Styled.FooterBrandName href="#" onClick={handleLogoClick}>
-            <Styled.FooterBracket>{BRAND_PREFIX}</Styled.FooterBracket>
-            {BRAND_NAME}
-            <Styled.FooterBracket>{BRAND_SUFFIX}</Styled.FooterBracket>
-          </Styled.FooterBrandName>
+          <Styled.FooterBracket>{BRAND_PREFIX}</Styled.FooterBracket>
+          {BRAND_NAME}
+          <Styled.FooterBracket>{BRAND_SUFFIX}</Styled.FooterBracket>
+        </Styled.FooterBrandName>
 
         <Styled.FooterContactsRow
           initial={{ opacity: 0, y: 20 }}
@@ -47,7 +46,7 @@ const Footer = () => {
           transition={{ delay: 0.3, duration: 0.6, ease: EASE_OUT_EXPO }}
         >
           {CONTACT_LINKS.map(({ key, href }) => {
-            const Icon = ICON_MAP[key]
+            const Icon = ICON_MAP[key];
             return (
               <Styled.FooterContactLink
                 key={key}
@@ -58,16 +57,16 @@ const Footer = () => {
                 <Icon />
                 {t(key)}
               </Styled.FooterContactLink>
-            )
+            );
           })}
         </Styled.FooterContactsRow>
 
         <Styled.FooterCopyright>
           &copy; {new Date().getFullYear()} {t('footer.copyright')}
-          </Styled.FooterCopyright>
+        </Styled.FooterCopyright>
       </Styled.FooterContainer>
     </Styled.FooterEl>
-  )
-}
+  );
+};
 
 export default Footer;

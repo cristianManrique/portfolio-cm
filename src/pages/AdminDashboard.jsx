@@ -17,7 +17,7 @@ const Header = styled.div`
   justify-content: space-between;
   max-width: 1080px;
   margin: 0 auto 2.5rem;
-  border-bottom: 1px solid var(--border-dim, rgba(0,180,200,.2));
+  border-bottom: 1px solid var(--border-dim, rgba(0, 180, 200, 0.2));
   padding-bottom: 1.2rem;
 `;
 
@@ -29,20 +29,27 @@ const Title = styled.h1`
   text-transform: uppercase;
   letter-spacing: 0.08em;
   margin: 0;
-  span { color: var(--accent, #00b4c8); }
+  span {
+    color: var(--accent, #00b4c8);
+  }
 `;
 
 const LogoutBtn = styled.button`
   background: none;
-  border: 1px solid var(--border-dim, rgba(0,180,200,.2));
+  border: 1px solid var(--border-dim, rgba(0, 180, 200, 0.2));
   color: var(--text-muted, #a0c4d8);
   border-radius: 4px;
   padding: 6px 16px;
   font-size: 0.8rem;
   cursor: pointer;
   letter-spacing: 0.06em;
-  transition: border-color 0.2s, color 0.2s;
-  &:hover { border-color: var(--accent, #00b4c8); color: var(--accent, #00b4c8); }
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+  &:hover {
+    border-color: var(--accent, #00b4c8);
+    color: var(--accent, #00b4c8);
+  }
 `;
 
 const DemoBanner = styled.div`
@@ -55,7 +62,10 @@ const DemoBanner = styled.div`
   font-size: 0.75rem;
   color: #f4a261;
   line-height: 1.6;
-  code { font-size: 0.7rem; opacity: 0.8; }
+  code {
+    font-size: 0.7rem;
+    opacity: 0.8;
+  }
 `;
 
 const Grid = styled.div`
@@ -64,12 +74,14 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1.4fr;
   gap: 2rem;
-  @media (max-width: 768px) { grid-template-columns: 1fr; }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Card = styled.div`
   background: var(--bg-card, #0a3a52);
-  border: 1px solid var(--border-dim, rgba(0,180,200,.2));
+  border: 1px solid var(--border-dim, rgba(0, 180, 200, 0.2));
   border-top: 3px solid var(--accent, #00b4c8);
   border-radius: 6px;
   padding: 1.5rem;
@@ -96,8 +108,8 @@ const Label = styled.label`
 
 const Input = styled.input`
   width: 100%;
-  background: rgba(0,0,0,.25);
-  border: 1px solid var(--border-dim, rgba(0,180,200,.2));
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-dim, rgba(0, 180, 200, 0.2));
   border-radius: 4px;
   padding: 0.5rem 0.75rem;
   color: var(--white, #fff);
@@ -105,13 +117,15 @@ const Input = styled.input`
   outline: none;
   box-sizing: border-box;
   transition: border-color 0.2s;
-  &:focus { border-color: var(--accent, #00b4c8); }
+  &:focus {
+    border-color: var(--accent, #00b4c8);
+  }
 `;
 
 const Textarea = styled.textarea`
   width: 100%;
-  background: rgba(0,0,0,.25);
-  border: 1px solid var(--border-dim, rgba(0,180,200,.2));
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-dim, rgba(0, 180, 200, 0.2));
   border-radius: 4px;
   padding: 0.5rem 0.75rem;
   color: var(--white, #fff);
@@ -121,7 +135,9 @@ const Textarea = styled.textarea`
   resize: vertical;
   min-height: 70px;
   transition: border-color 0.2s;
-  &:focus { border-color: var(--accent, #00b4c8); }
+  &:focus {
+    border-color: var(--accent, #00b4c8);
+  }
 `;
 
 const UploadZone = styled.label`
@@ -129,7 +145,7 @@ const UploadZone = styled.label`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px dashed var(--border-dim, rgba(0,180,200,.25));
+  border: 2px dashed var(--border-dim, rgba(0, 180, 200, 0.25));
   border-radius: 4px;
   padding: 1.2rem;
   cursor: pointer;
@@ -138,7 +154,9 @@ const UploadZone = styled.label`
   font-size: 0.8rem;
   text-align: center;
   gap: 4px;
-  &:hover { border-color: var(--accent, #00b4c8); }
+  &:hover {
+    border-color: var(--accent, #00b4c8);
+  }
 `;
 
 const Preview = styled.img`
@@ -170,8 +188,10 @@ const ProjectRow = styled.div`
   align-items: center;
   gap: 12px;
   padding: 0.75rem 0;
-  border-bottom: 1px solid rgba(0,180,200,.1);
-  &:last-child { border-bottom: none; }
+  border-bottom: 1px solid rgba(0, 180, 200, 0.1);
+  &:last-child {
+    border-bottom: none;
+  }
 `;
 
 const DragHandle = styled.div`
@@ -182,7 +202,9 @@ const DragHandle = styled.div`
   cursor: grab;
   flex-shrink: 0;
   opacity: 0.45;
-  &:hover { opacity: 1; }
+  &:hover {
+    opacity: 1;
+  }
   span {
     display: block;
     width: 16px;
@@ -197,7 +219,7 @@ const Thumb = styled.img`
   height: 40px;
   object-fit: cover;
   border-radius: 3px;
-  background: rgba(0,0,0,.3);
+  background: rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
 `;
 
@@ -223,7 +245,7 @@ const ProjectTags = styled.div`
 
 const ActionBtn = styled.button`
   background: none;
-  border: 1px solid rgba(0,180,200,.4);
+  border: 1px solid rgba(0, 180, 200, 0.4);
   color: var(--accent, #00b4c8);
   border-radius: 4px;
   padding: 4px 10px;
@@ -231,13 +253,17 @@ const ActionBtn = styled.button`
   cursor: pointer;
   flex-shrink: 0;
   transition: background 0.2s;
-  &:hover { background: rgba(0,180,200,.08); }
+  &:hover {
+    background: rgba(0, 180, 200, 0.08);
+  }
 `;
 
 const DeleteBtn = styled(ActionBtn)`
-  border-color: rgba(230,57,70,.4);
+  border-color: rgba(230, 57, 70, 0.4);
   color: #e63946;
-  &:hover { background: rgba(230,57,70,.12); }
+  &:hover {
+    background: rgba(230, 57, 70, 0.12);
+  }
 `;
 
 const OrderToolbar = styled.div`
@@ -272,7 +298,7 @@ const ResetBtn = styled.button`
   text-transform: uppercase;
   cursor: not-allowed;
   background: none;
-  border: 1px solid rgba(0,180,200,.35);
+  border: 1px solid rgba(0, 180, 200, 0.35);
   color: var(--text-muted, #a0c4d8);
   opacity: 0.45;
 `;
@@ -315,7 +341,9 @@ const AdminDashboard = () => {
   const navigate = useNavigate();
 
   const showDemo = () =>
-    alert('Demo mode — configure your .env + Netlify Functions to activate CRUD operations.');
+    alert(
+      'Demo mode — configure your .env + Netlify Functions to activate CRUD operations.'
+    );
 
   const handleLogout = () => {
     sessionStorage.removeItem('admin_token');
@@ -325,26 +353,31 @@ const AdminDashboard = () => {
   return (
     <Page>
       <Header>
-        <Title>&lt;- <span>Admin</span> Dashboard -&gt;</Title>
+        <Title>
+          &lt;- <span>Admin</span> Dashboard -&gt;
+        </Title>
         <LogoutBtn onClick={handleLogout}>Déconnexion</LogoutBtn>
       </Header>
 
       <DemoBanner>
-        <strong>Alpha / Demo mode</strong> — all CRUD operations are disabled in this
-        public version. In production, this dashboard connects to{' '}
-        <code>netlify/functions/projects-*.js</code> via an Axios client with a JWT
-        interceptor (<code>src/utils/Api.js</code>). Drag-and-drop reordering persists
-        to MongoDB via <code>Project.bulkWrite()</code> in{' '}
+        <strong>Alpha / Demo mode</strong> — all CRUD operations are disabled in
+        this public version. In production, this dashboard connects to{' '}
+        <code>netlify/functions/projects-*.js</code> via an Axios client with a
+        JWT interceptor (<code>src/utils/Api.js</code>). Drag-and-drop
+        reordering persists to MongoDB via <code>Project.bulkWrite()</code> in{' '}
         <code>projects-reorder.js</code>.
       </DemoBanner>
 
       <Grid>
-
         {/* ── ADD / EDIT PROJECT FORM (UI only) ── */}
         <Card>
           <CardTitle>Ajouter un projet</CardTitle>
-          <form onSubmit={e => { e.preventDefault(); showDemo(); }}>
-
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              showDemo();
+            }}
+          >
             <Label>Titre (EN) *</Label>
             <Input placeholder="My Project" readOnly />
 
@@ -352,10 +385,16 @@ const AdminDashboard = () => {
             <Input placeholder="Mon projet" readOnly />
 
             <Label>Description (EN) *</Label>
-            <Textarea placeholder="Project description in English..." readOnly />
+            <Textarea
+              placeholder="Project description in English..."
+              readOnly
+            />
 
             <Label>Description (FR) *</Label>
-            <Textarea placeholder="Description du projet en français..." readOnly />
+            <Textarea
+              placeholder="Description du projet en français..."
+              readOnly
+            />
 
             <Label>Tags (séparés par virgule)</Label>
             <Input placeholder="React, Node.js, MongoDB" readOnly />
@@ -369,7 +408,9 @@ const AdminDashboard = () => {
             <Label>Image du projet</Label>
             <UploadZone>
               <Preview src="/projects/project-placeholder.svg" alt="preview" />
-              <small style={{ marginTop: '0.4rem' }}>Cliquez pour ajouter une image</small>
+              <small style={{ marginTop: '0.4rem' }}>
+                Cliquez pour ajouter une image
+              </small>
             </UploadZone>
 
             <SubmitBtn type="submit" whileTap={{ scale: 0.97 }}>
@@ -388,10 +429,12 @@ const AdminDashboard = () => {
             <ResetBtn disabled>Reset</ResetBtn>
           </OrderToolbar>
 
-          {MOCK_PROJECTS.map(p => (
+          {MOCK_PROJECTS.map((p) => (
             <ProjectRow key={p.id}>
               <DragHandle title="Drag to reorder">
-                <span /><span /><span />
+                <span />
+                <span />
+                <span />
               </DragHandle>
               <Thumb src={p.thumb} alt={p.title} />
               <ProjectInfo>
@@ -403,7 +446,6 @@ const AdminDashboard = () => {
             </ProjectRow>
           ))}
         </Card>
-
       </Grid>
     </Page>
   );

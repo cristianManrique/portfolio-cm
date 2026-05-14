@@ -70,28 +70,19 @@
         "period": "2016 - 2017",
         "company": "LOREM IPSUM",
         "role": "Développeur Front-End - Designer",
-        "tags": [
-          "Javascript",
-          "Angular"
-        ]
+        "tags": ["Javascript", "Angular"]
       },
       {
         "period": "2015",
         "company": "LOREM IPSUM2",
         "role": "Développeur Front-End - Designer",
-        "tags": [
-          "Javascript",
-          "Angular"
-        ]
+        "tags": ["Javascript", "Angular"]
       },
       {
         "period": "2014",
         "company": "LOREM IPSUM24r56",
         "role": "Développeur Front-End - Designer",
-        "tags": [
-          "Javascript",
-          "Angular"
-        ]
+        "tags": ["Javascript", "Angular"]
       }
     ],
     "expand": "Voir plus",

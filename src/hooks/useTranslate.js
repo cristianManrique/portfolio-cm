@@ -15,18 +15,18 @@ import { setLanguage, toggleLanguage } from '../redux/store';
  *  - langLabel    → display label for the toggle button e.g. "FR/EN"
  */
 export default function useTranslate() {
-  const { t } = useTranslation()
-  const dispatch = useDispatch()
-  const lang = useSelector(state => state.language.current)
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const lang = useSelector((state) => state.language.current);
 
-  const isEN = lang === 'en'
-  const isFR = lang === 'fr'
+  const isEN = lang === 'en';
+  const isFR = lang === 'fr';
 
-  const switchLang = () => dispatch(toggleLanguage())
-  const setLang = (code) => dispatch(setLanguage(code))
+  const switchLang = () => dispatch(toggleLanguage());
+  const setLang = (code) => dispatch(setLanguage(code));
 
   // Display label in Navbar — shows the OTHER language you can switch to
-  const langLabel = isEN ? 'EN' : 'FR'
+  const langLabel = isEN ? 'EN' : 'FR';
 
-  return { t, lang, isEN, isFR, switchLang, setLang, langLabel }
+  return { t, lang, isEN, isFR, switchLang, setLang, langLabel };
 }

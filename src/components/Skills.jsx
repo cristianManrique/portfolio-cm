@@ -20,17 +20,17 @@ const SkillBar = ({ name, level, delay }) => (
       />
     </Styled.SkillsBarTrack>
   </Styled.SkillsBarRow>
-)
+);
 
 SkillBar.propTypes = {
-  name:  PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   level: PropTypes.number.isRequired,
   delay: PropTypes.number,
-}
+};
 
 // ─── Component ────────────────────────────────────────────────────────────────
 const Skills = () => {
-  const { t, isEN } = useTranslate()
+  const { t, isEN } = useTranslate();
 
   return (
     <Styled.SkillsSection id="skills">
@@ -62,7 +62,11 @@ const Skills = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ delay: colIdx * 0.15, duration: 0.6, ease: EASE_OUT_EXPO }}
+                transition={{
+                  delay: colIdx * 0.15,
+                  duration: 0.6,
+                  ease: EASE_OUT_EXPO,
+                }}
               >
                 <Styled.SkillsColHeader>
                   <Styled.SkillsColIcon>{col.icon}</Styled.SkillsColIcon>
@@ -72,8 +76,10 @@ const Skills = () => {
                 {col.skills.map((skill, skillIdx) => {
                   // name can be string or ["EN", "FR"] pair
                   const skillName = Array.isArray(skill.name)
-                    ? (isEN ? skill.name[0] : skill.name[1])
-                    : skill.name
+                    ? isEN
+                      ? skill.name[0]
+                      : skill.name[1]
+                    : skill.name;
 
                   return (
                     <SkillBar
@@ -82,15 +88,15 @@ const Skills = () => {
                       level={skill.level}
                       delay={colIdx * 0.12 + skillIdx * 0.07}
                     />
-                  )
+                  );
                 })}
               </Styled.SkillsColumnCard>
-            )
+            );
           })}
         </Styled.SkillsGrid>
       </Styled.SkillsContainer>
     </Styled.SkillsSection>
-  )
-}
+  );
+};
 
 export default Skills;

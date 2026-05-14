@@ -1,21 +1,21 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import StarTrail       from './components/StarTrail';
-import Navbar          from './components/Navbar';
-import Hero            from './components/Hero';
+import StarTrail from './components/StarTrail';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
 import HelmetComponent from './components/HelmetComponent';
-import ProtectedRoute  from './components/ProtectedRoute';
+import ProtectedRoute from './components/ProtectedRoute';
 
 // Lazy-loaded sections
-const About       = lazy(() => import('./components/About'));
-const Experience   = lazy(() => import('./components/Experience'));
-const Projects     = lazy(() => import('./components/Projects'));
-const Skills       = lazy(() => import('./components/Skills'));
-const ContactForm  = lazy(() => import('./components/ContactForm'));
-const Footer       = lazy(() => import('./components/Footer'));
+const About = lazy(() => import('./components/About'));
+const Experience = lazy(() => import('./components/Experience'));
+const Projects = lazy(() => import('./components/Projects'));
+const Skills = lazy(() => import('./components/Skills'));
+const ContactForm = lazy(() => import('./components/ContactForm'));
+const Footer = lazy(() => import('./components/Footer'));
 
 // Admin pages (lazy — never in main bundle)
-const AdminLogin     = lazy(() => import('./pages/AdminLogin'));
+const AdminLogin = lazy(() => import('./pages/AdminLogin'));
 const AdminDashboard = lazy(() => import('./pages/AdminDashboard'));
 
 // ── Portfolio page ─────────────────────────────────────────────────────────────

@@ -3,12 +3,14 @@
   publish   = "dist"
   functions = "netlify/functions"
 
+# ── API routes — MUST be first ──────────────────────────────────────
 [[redirects]]
-  from = "/api/*"
-  to   = "/.netlify/functions/:splat"
+  from   = "/api/*"
+  to     = "/.netlify/functions/:splat"
   status = 200
 
+# ── SPA fallback — MUST be last ─────────────────────────────────────
 [[redirects]]
-  from = "/*"
-  to   = "/index.html"
+  from   = "/*"
+  to     = "/index.html"
   status = 200

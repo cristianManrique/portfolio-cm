@@ -2,14 +2,13 @@
   "env": { "browser": true, "es2021": true },
   "extends": [
     "eslint:recommended",
-    "plugin:prettier/recommended"   // ← must be LAST
+    "plugin:prettier/recommended" // ← must be LAST
   ],
   "rules": {
     "no-unused-vars": "warn",
     "no-console": "warn",
     "semi": ["error", "always"],
     "quotes": ["error", "double"],
-    "prettier/prettier": "warn"     // show Prettier issues as warnings
-
+    "prettier/prettier": "warn" // show Prettier issues as warnings
   }
 }

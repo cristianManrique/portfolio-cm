@@ -15,13 +15,13 @@ import useTranslate from '../hooks/useTranslate';
 import * as Styled from '../components/PortfolioStyled';
 
 const Projects = () => {
-  const { t, isEN }              = useTranslate();
-  const [index, setIndex]       = useState(0);
+  const { t, isEN } = useTranslate();
+  const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState(null);
-  const [visible, setVisible]   = useState(3);
+  const [visible, setVisible] = useState(3);
   const [cardWidth, setCardWidth] = useState(CAROUSEL_CARD_WIDTH);
   const [projects, setProjects] = useState(PROJECTS);
-  const trackRef                = useRef(null);
+  const trackRef = useRef(null);
   const lang = isEN ? 'en' : 'fr';
 
   // ── Fetch projects from API, fallback to Constants ────────────────────────
@@ -33,47 +33,65 @@ const Projects = () => {
           console.log('[Projects] DB loaded —', data.length, 'projects');
         }
       })
-      .catch((err) => console.warn('[Projects] API unavailable, using fallback —', err.message));
+      .catch((err) =>
+        console.warn(
+          '[Projects] API unavailable, using fallback —',
+          err.message
+        )
+      );
   }, []);
 
   useEffect(() => {
     fetchProjects();
     const channel = new BroadcastChannel('portfolio-sync');
-    channel.onmessage = (e) => { if (e.data?.type === 'projects-updated') fetchProjects(); };
+    channel.onmessage = (e) => {
+      if (e.data?.type === 'projects-updated') fetchProjects();
+    };
     return () => channel.close();
   }, [fetchProjects]);
 
   // ── Calculate cards visible from container width ──────────────────────────
   const calcVisible = useCallback(() => {
-    if (!trackRef.current) return
-    const width = trackRef.current.offsetWidth
+    if (!trackRef.current) return;
+    const width = trackRef.current.offsetWidth;
     // On mobile, actual card width is fluid — measure from DOM if possible
-    const firstCard = trackRef.current.querySelector('[data-card]')
-    const actualCardWidth = firstCard ? firstCard.offsetWidth : CAROUSEL_CARD_WIDTH
-    setCardWidth(actualCardWidth)
-    const count = Math.max(1, Math.floor(
-      (width + CAROUSEL_CARD_GAP) / (actualCardWidth + CAROUSEL_CARD_GAP)
-    ));
+    const firstCard = trackRef.current.querySelector('[data-card]');
+    const actualCardWidth = firstCard
+      ? firstCard.offsetWidth
+      : CAROUSEL_CARD_WIDTH;
+    setCardWidth(actualCardWidth);
+    const count = Math.max(
+      1,
+      Math.floor(
+        (width + CAROUSEL_CARD_GAP) / (actualCardWidth + CAROUSEL_CARD_GAP)
+      )
+    );
     setVisible(count);
-  }, [])
+  }, []);
 
   useEffect(() => {
-    const el = trackRef.current
+    const el = trackRef.current;
     if (!el) return;
-    calcVisible()
-    const ro = new ResizeObserver(calcVisible)
-    ro.observe(el)
-    return () => ro.disconnect()
+    calcVisible();
+    const ro = new ResizeObserver(calcVisible);
+    ro.observe(el);
+    return () => ro.disconnect();
   }, [calcVisible]);
 
   const maxIndex = Math.max(0, projects.length - visible);
 
   useEffect(() => {
-    setIndex(i => Math.min(i, maxIndex))
+    setIndex((i) => Math.min(i, maxIndex));
   }, [maxIndex]);
 
-  const prev = useCallback(() => setIndex(i => Math.max(0, i - 1)),[setIndex]);
-  const next = useCallback(() => setIndex(i => Math.min(maxIndex, i + 1)),[setIndex]);
+  const prev = useCallback(
+    () => setIndex((i) => Math.max(0, i - 1)),
+    [setIndex]
+  );
+  const next = useCallback(
+    () => setIndex((i) => Math.min(maxIndex, i + 1)),
+    [setIndex]
+  );
 
   return (
     <Styled.ProjectsSection id="projects">
@@ -95,7 +113,6 @@ const Projects = () => {
       </Styled.ProjectsHeader>
 
       <Styled.ProjectsCarouselWrapper>
-
         {/* Arrow LEFT */}
         <Styled.ProjectsPrevButton
           onClick={prev}
@@ -110,7 +127,6 @@ const Projects = () => {
 
         {/* Track outer — measures available width via ref */}
         <Styled.ProjectsTrackOuter ref={trackRef}>
-
           {/* Track center — exact width for N visible cards, centered */}
           <Styled.ProjectsTrackCenter
             $visible={visible}
@@ -120,7 +136,7 @@ const Projects = () => {
               animate={{ x: -(index * (cardWidth + CAROUSEL_CARD_GAP)) }}
               transition={{ duration: 0.5, ease: EASE_OUT_EXPO }}
             >
-              {projects.map(project => (
+              {projects.map((project) => (
                 <div key={project._id || project.id} data-card>
                   <ProjectCard
                     project={project}
@@ -131,7 +147,6 @@ const Projects = () => {
               ))}
             </Styled.ProjectsTrackInner>
           </Styled.ProjectsTrackCenter>
-
         </Styled.ProjectsTrackOuter>
 
         {/* Arrow RIGHT */}
@@ -145,7 +160,6 @@ const Projects = () => {
         >
           {'>'}
         </Styled.ProjectsNextButton>
-
       </Styled.ProjectsCarouselWrapper>
 
       {/* Dots — dynamic, hidden if only 1 page */}
@@ -172,9 +186,8 @@ const Projects = () => {
           />
         )}
       </AnimatePresence>
-
     </Styled.ProjectsSection>
-  )
-}
+  );
+};
 
 export default Projects;

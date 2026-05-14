@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate }      from 'react-router-dom';
-import styled               from 'styled-components';
-import { motion }           from 'motion/react';
+import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
+import { motion } from 'motion/react';
 
 // ── Styled ────────────────────────────────────────────────────────────────────
 const Page = styled.div`
@@ -31,7 +31,9 @@ const Logo = styled.div`
   color: var(--white, #fff);
   letter-spacing: 0.08em;
   margin-bottom: 0.35rem;
-  span { color: var(--accent, #00b4c8); }
+  span {
+    color: var(--accent, #00b4c8);
+  }
 `;
 
 const Subtitle = styled.p`
@@ -62,7 +64,9 @@ const Input = styled.input`
   box-sizing: border-box;
   margin-bottom: 1.2rem;
   transition: border-color 0.2s;
-  &:focus { border-color: var(--accent, #00b4c8); }
+  &:focus {
+    border-color: var(--accent, #00b4c8);
+  }
 `;
 
 const SubmitBtn = styled(motion.button)`
@@ -108,7 +112,7 @@ const DemoBanner = styled.div`
 const AdminLogin = () => {
   const navigate = useNavigate();
   const [password, setPassword] = useState('');
-  const [msg, setMsg]           = useState('');
+  const [msg, setMsg] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -122,7 +126,9 @@ const AdminLogin = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
       >
-        <Logo>&lt;- <span>Admin</span> -&gt;</Logo>
+        <Logo>
+          &lt;- <span>Admin</span> -&gt;
+        </Logo>
         <Subtitle>CMS Dashboard — Portfolio</Subtitle>
 
         <form onSubmit={handleSubmit}>
@@ -130,13 +136,19 @@ const AdminLogin = () => {
           <Input
             type="password"
             value={password}
-            onChange={e => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             autoFocus
             placeholder="••••••••"
           />
 
           {msg && (
-            <p style={{ fontSize: '0.78rem', color: '#f4a261', marginBottom: '0.75rem' }}>
+            <p
+              style={{
+                fontSize: '0.78rem',
+                color: '#f4a261',
+                marginBottom: '0.75rem',
+              }}
+            >
               ⚠ {msg}
             </p>
           )}
@@ -147,12 +159,8 @@ const AdminLogin = () => {
         </form>
 
         <DemoBanner>
-          <strong>Alpha / Demo mode</strong> — authentication is disabled in this public
-          version. In production, this calls{' '}
-          <code>netlify/functions/auth-login.js</code>, verifies a bcrypt hash and
-          returns a signed JWT stored in <code>sessionStorage</code>.
-          <br /><br />
-          Required env vars: <code>ADMIN_PASSWORD_HASH</code> · <code>ADMIN_JWT_SECRET</code>
+          <strong>Alpha / Demo mode</strong> — authentication is disabled in
+          this public version.
         </DemoBanner>
       </Card>
     </Page>

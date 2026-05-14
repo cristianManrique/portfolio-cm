@@ -5,8 +5,8 @@ import {
   BRAND_PREFIX,
   BRAND_SUFFIX,
   EASE_OUT_EXPO,
-  subtitleVariants
- } from '../components/Constants';
+  subtitleVariants,
+} from '../components/Constants';
 import useTranslate from '../hooks/useTranslate';
 
 // Assets
@@ -14,20 +14,20 @@ import CvButton from '../assets/CvButton';
 
 import * as Styled from '../components/PortfolioStyled';
 
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 const About = () => {
   const { t, isFR } = useTranslate();
   return (
     <Styled.AboutSection id="about">
-       <Styled.SectionFlipTitle
-        variants={subtitleVariants} initial="hidden" animate="visible"
-
+      <Styled.SectionFlipTitle
+        variants={subtitleVariants}
+        initial="hidden"
+        animate="visible"
       >
-        <h2>{t('about.who')} {" "}
-          <span>{t('about.am_i')}</span>
-          {isFR ? " ?" : "?"}
+        <h2>
+          {t('about.who')} <span>{t('about.am_i')}</span>
+          {isFR ? ' ?' : '?'}
         </h2>
       </Styled.SectionFlipTitle>
 
@@ -52,17 +52,17 @@ const About = () => {
                 src="/avatar.png"
                 alt="Cristian Manrique"
                 loading="lazy"
-                onError={e => {
-                  e.target.style.display = 'none'
+                onError={(e) => {
+                  e.target.style.display = 'none';
                   e.target.parentNode.style.background =
-                    'linear-gradient(135deg, var(--bg-card) 0%, var(--accent-dim) 100%)'
+                    'linear-gradient(135deg, var(--bg-card) 0%, var(--accent-dim) 100%)';
                 }}
               />
             </Styled.AboutAvatarWrapper>
 
             <Styled.AboutBrandName>
               <Styled.AboutBracket>{BRAND_PREFIX}</Styled.AboutBracket>
-                {BRAND_NAME}
+              {BRAND_NAME}
               <Styled.AboutBracket>{BRAND_SUFFIX}</Styled.AboutBracket>
             </Styled.AboutBrandName>
 
@@ -85,7 +85,7 @@ const About = () => {
         </Styled.AboutGrid>
       </Styled.AboutContainer>
     </Styled.AboutSection>
-  )
-}
+  );
+};
 
 export default About;

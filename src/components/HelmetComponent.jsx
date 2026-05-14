@@ -20,17 +20,17 @@ const HelmetComponent = () => {
       <meta name="description" content={description} />
 
       {/* ── Open Graph ── */}
-      <meta property="og:type"        content="website" />
-      <meta property="og:title"       content={title} />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image"       content="/cris.png" />
-      <meta property="og:url"         content="https://crisman.dev" />
+      <meta property="og:image" content="/cris.png" />
+      <meta property="og:url" content="https://crisman.dev" />
 
       {/* ── Twitter Card ── */}
-      <meta name="twitter:card"        content="summary_large_image" />
-      <meta name="twitter:title"       content={title} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image"       content="/cris.png" />
+      <meta name="twitter:image" content="/cris.png" />
 
       {/* ── Canonical ── */}
       <link rel="canonical" href="https://crisman.dev" />

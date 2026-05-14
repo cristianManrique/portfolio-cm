@@ -1,105 +1,36 @@
 {
   "nav": {
-    "about": [
-      "About",
-      "À propos"
-    ],
-    "experiences": [
-      "Experiences",
-      "Expériences"
-    ],
-    "projects": [
-      "Projects",
-      "Projets"
-    ],
-    "skills": [
-      "Skills",
-      "Compétences"
-    ],
-    "contacts": [
-      "Contacts",
-      "Contact"
-    ]
+    "about": ["About", "À propos"],
+    "experiences": ["Experiences", "Expériences"],
+    "projects": ["Projects", "Projets"],
+    "skills": ["Skills", "Compétences"],
+    "contacts": ["Contacts", "Contact"]
   },
-   "hero": {
-    "line1_pre": [
-      "The",
-      "Le"
-    ],
-    "line1_bold": [
-      "FUTURE",
-      "FUTUR"
-    ],
-    "line1_post": [
-      "of",
-      "du"
-    ],
-    "line2": [
-      "DESIGN",
-      "DESIGN"
-    ],
-    "line_and": [
-      "&",
-      "et"
-    ],
-    "line3": [
-      "DEVELOPMENT",
-      "DÉVELOPPEMENT"
-    ],
-    "line4_pre": [
-      "is ",
-      "c'est "
-    ],
-    "line4_human": [
-      "HUMAN",
-      "HUMAIN"
-    ],
-    "line4_ai": [
-      "AI",
-      "IA"
-    ],
-    "subtitle_pre": [
-      "The ",
-      "Le "
-    ],
-    "subtitle_bold1": [
-      "FUTURE ",
-      "FUTUR "
-    ],
-    "subtitle_mid": [
-      "is ",
-      "c'est "
-    ],
-    "subtitle_bold2": [
-      "NOW",
-      "MAINTENANT"
-    ],
-    "scroll": [
-      "Scroll",
-      "Défiler"
-    ],
-    "pill_dev": [
-      "Front-End developer",
-      "Développeur Front-End"
-    ],
-    "pill_design": [
-      "Web Designer UI/UX",
-      "Web Designer UI/UX"
-    ]
+  "hero": {
+    "line1_pre": ["The", "Le"],
+    "line1_bold": ["FUTURE", "FUTUR"],
+    "line1_post": ["of", "du"],
+    "line2": ["DESIGN", "DESIGN"],
+    "line_and": ["&", "et"],
+    "line3": ["DEVELOPMENT", "DÉVELOPPEMENT"],
+    "line4_pre": ["is ", "c'est "],
+    "line4_human": ["HUMAN", "HUMAIN"],
+    "line4_ai": ["AI", "IA"],
+    "subtitle_pre": ["The ", "Le "],
+    "subtitle_bold1": ["FUTURE ", "FUTUR "],
+    "subtitle_mid": ["is ", "c'est "],
+    "subtitle_bold2": ["NOW", "MAINTENANT"],
+    "scroll": ["Scroll", "Défiler"],
+    "pill_dev": ["Front-End developer", "Développeur Front-End"],
+    "pill_design": ["Web Designer UI/UX", "Web Designer UI/UX"]
   },
   "about": {
-     "title": [
+    "title": [
       "Front-End developer | Designer (Web UI/UX)",
       "Développeur Front-End | Designer (Web UI/UX)"
     ],
-    "who": [
-      "Who",
-      "QUI"
-    ],
-    "am_i": [
-      "AM I",
-      "SUIS-JE"
-    ],
+    "who": ["Who", "QUI"],
+    "am_i": ["AM I", "SUIS-JE"],
     "p1": [
       "Front-end developer who designs. Designer who codes.",
       "Développeur front-end qui design. Designer qui code."
@@ -112,20 +43,11 @@
       "12 years in art direction and graphic design. 7 years shipping React interfaces in production.",
       "12 ans en direction artistique et graphisme. 7 ans à implémenter des interfaces React en production."
     ],
-    "cv": [
-      "Curriculum Vitae",
-      "Curriculum Vitae"
-    ]
+    "cv": ["Curriculum Vitae", "Curriculum Vitae"]
   },
   "experience": {
-    "section_pre": [
-      "Work",
-      "Expériences"
-    ],
-    "section_bold": [
-      "EXPERIENCES",
-      "PROFESSIONNELLES"
-    ],
+    "section_pre": ["Work", "Expériences"],
+    "section_bold": ["EXPERIENCES", "PROFESSIONNELLES"],
     "jobs": [
       {
         "period": "2018 - 2026",
@@ -169,10 +91,7 @@
           "Front-End Developer - Designer",
           "Développeur Front-End - Designer"
         ],
-        "tags": [
-          "Javascript",
-          "Angular"
-        ]
+        "tags": ["Javascript", "Angular"]
       },
       {
         "period": "2015",
@@ -181,10 +100,7 @@
           "Front-End Developer - Designer",
           "Développeur Front-End - Designer"
         ],
-        "tags": [
-          "Javascript",
-          "Angular"
-        ]
+        "tags": ["Javascript", "Angular"]
       },
       {
         "period": "2014",
@@ -193,94 +109,43 @@
           "Front-End Developer - Designer",
           "Développeur Front-End - Designer"
         ],
-        "tags": [
-          "Javascript",
-          "Angular"
-        ]
+        "tags": ["Javascript", "Angular"]
       }
     ],
-    "expand": [
-      "See more",
-      "Voir plus"
-    ],
-    "collapse": [
-      "See less",
-      "Voir moins"
-    ]
+    "expand": ["See more", "Voir plus"],
+    "collapse": ["See less", "Voir moins"]
   },
   "projects": {
-    "section": [
-      "PROJECTS",
-      "PROJETS"
-    ]
+    "section": ["PROJECTS", "PROJETS"]
   },
   "skills": {
-    "section": [
-      "SKILLS",
-      "COMPÉTENCES"
-    ],
+    "section": ["SKILLS", "COMPÉTENCES"],
     "columns": [
       {
-        "category": [
-          "Development",
-          "Développement"
-        ]
+        "category": ["Development", "Développement"]
       },
       {
-        "category": [
-          "Design & UX/UI",
-          "Design & UX/UI"
-        ]
+        "category": ["Design & UX/UI", "Design & UX/UI"]
       },
       {
-        "category": [
-          "Tools & AI",
-          "Outils & IA"
-        ]
+        "category": ["Tools & AI", "Outils & IA"]
       }
     ]
   },
   "contact": {
-    "section": [
-      "CONTACT",
-      "CONTACT"
-    ],
-    "subtitle": [
-      "Let's work together",
-      "Travaillons ensemble"
-    ],
-    "name_label": [
-      "Name",
-      "Nom"
-    ],
-    "name_placeholder": [
-      "Your name",
-      "Votre nom"
-    ],
-    "email_label": [
-      "Email",
-      "Courriel"
-    ],
-    "email_placeholder": [
-      "your@email.com",
-      "votre@email.com"
-    ],
-    "message_label": [
-      "Message",
-      "Message"
-    ],
+    "section": ["CONTACT", "CONTACT"],
+    "subtitle": ["Let's work together", "Travaillons ensemble"],
+    "name_label": ["Name", "Nom"],
+    "name_placeholder": ["Your name", "Votre nom"],
+    "email_label": ["Email", "Courriel"],
+    "email_placeholder": ["your@email.com", "votre@email.com"],
+    "message_label": ["Message", "Message"],
     "message_placeholder": [
       "Tell me about your project or idea...",
       "Parlez-moi de votre projet ou idée..."
     ],
-    "send": [
-      "Send message",
-      "Envoyer"
-    ],
-    "sending": [
-      "Sending...",
-      "Envoi en cours..."
-    ],
+    "send": ["Send message", "Envoyer"],
+    "sending": ["Sending...", "Envoi en cours..."],
     "success": [
       "Message sent! I'll get back to you soon.",
       "Message envoyé ! Je vous répondrai sous peu."
@@ -293,10 +158,7 @@
       "Please wait a moment before sending again.",
       "Veuillez patienter avant d'envoyer à nouveau."
     ],
-    "err_name_required": [
-      "Name is required.",
-      "Le nom est requis."
-    ],
+    "err_name_required": ["Name is required.", "Le nom est requis."],
     "err_email_required": [
       "Email is required.",
       "L'adresse courriel est requise."
@@ -305,27 +167,15 @@
       "Please enter a valid email address.",
       "Veuillez entrer une adresse courriel valide."
     ],
-    "err_message_required": [
-      "Message is required.",
-      "Le message est requis."
-    ]
+    "err_message_required": ["Message is required.", "Le message est requis."]
   },
   "footer": {
-    "section": [
-      "CONTACTS",
-      "CONTACT"
-    ],
+    "section": ["CONTACTS", "CONTACT"],
     "links": {
       "linkedin": "LinkedIn",
       "github": "GitHub",
-      "email": [
-        "Email",
-        "Courriel"
-      ]
+      "email": ["Email", "Courriel"]
     },
-    "copyright": [
-      "All rights reserved",
-      "Tous droits réservés"
-    ]
+    "copyright": ["All rights reserved", "Tous droits réservés"]
   }
 }
